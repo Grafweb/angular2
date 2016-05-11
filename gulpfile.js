@@ -2,7 +2,13 @@ var path = require('path');
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
 var gls = require('gulp-live-server');
-
+var sass = require('gulp-sass');
+ 
+gulp.task('sass', function () {
+  return gulp.src('./sass/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./css'));
+});
 
 gulp.task('buildClient', function () {
 	var tsProject = ts.createProject('./tsconfig.json');
