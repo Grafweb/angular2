@@ -3,6 +3,8 @@ var gulp = require('gulp');
 var ts = require('gulp-typescript');
 var gls = require('gulp-live-server');
 var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
+ 
  
 gulp.task('sass', function () {
   return gulp.src('./sass/*.scss')
@@ -31,4 +33,15 @@ gulp.task('server', function() {
     server.start();
 });
 
-gulp.task("default", ['buildClient', 'buildServer','server']);
+gulp.task("default", ['sass', 'buildClient', 'buildServer','server']);
+
+/* autoprefixer sample work */
+/*gulp.task('sass', function () {
+  return gulp.src('./sass/*.scss')
+    .pipe(sass().on('error', sass.logError))
+	.pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
+    .pipe(gulp.dest('./css'));
+}); */
