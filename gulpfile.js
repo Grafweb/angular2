@@ -3,14 +3,14 @@ var gulp = require('gulp');
 var ts = require('gulp-typescript');
 var gls = require('gulp-live-server');
 var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
+//var autoprefixer = require('gulp-autoprefixer');
+var bower = require('gulp-bower');
  
- 
-gulp.task('sass', function () {
-  return gulp.src('./sass/*.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./css'));
+gulp.task('bower', function() {
+  return bower('./bower_components')
+    .pipe(gulp.dest('/app/libs/'))
 });
+ 
 
 gulp.task('buildClient', function () {
 	var tsProject = ts.createProject('./tsconfig.json');
@@ -33,7 +33,7 @@ gulp.task('server', function() {
     server.start();
 });
 
-gulp.task("default", ['sass', 'buildClient', 'buildServer','server']);
+gulp.task("default", ['bower', 'buildClient', 'buildServer','server']);
 
 /* autoprefixer sample work */
 /*gulp.task('sass', function () {
@@ -43,5 +43,5 @@ gulp.task("default", ['sass', 'buildClient', 'buildServer','server']);
 			browsers: ['last 2 versions'],
 			cascade: false
 		}))
-    .pipe(gulp.dest('./css'));
+    .pipe(gulp.dest('./app/libs/css'));
 }); */
