@@ -1,3 +1,7 @@
 import mongoose = require('mongoose');
-let user = mongoose.Schema({  username: String,  password: {type: String, select: false} })
-module.exports = mongoose.model('User', user) 
+let user = new mongoose.Schema({  
+    username: String,
+    password: {type: String, select: false} 
+});
+let UserModel = mongoose.model('User', user);
+export =  UserModel;
