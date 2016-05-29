@@ -1,7 +1,16 @@
 import mongoose = require('mongoose');
+
+interface IUser extends mongoose.Document {
+  id: string;
+  username: string;
+  password: string;
+}
+
+
 let user = new mongoose.Schema({  
     username: String,
     password: {type: String, select: false} 
 });
-let UserModel = mongoose.model('User', user);
+
+let UserModel = mongoose.model< IUser >('User', user);
 export =  UserModel;

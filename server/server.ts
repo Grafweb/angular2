@@ -7,7 +7,6 @@ let app = express();
 app.use('/app', express.static(path.resolve(__dirname, '/../app')));
 app.use('/libs', express.static(path.resolve(__dirname, 'libs')));
 
-
 let dbURI = 'mongodb://localhost:27017/cmsDB'; 
 mongoose.connect(dbURI); 
 mongoose.connection.on('connected', function () {  
@@ -33,7 +32,10 @@ process.on('SIGINT', function() {
 let renderIndex = (req: express.Request, res: express.Response) => {
     res.sendFile(path.resolve(__dirname, '/../index.html'));
 }
- 
+
+app.use('/api/sessions', require('./controllers/api/sessions'));
+app.use('/api/users', require('./controllers/api/users'));
+
 app.get('/*', renderIndex);
  
 let server = app.listen(port, function() {
