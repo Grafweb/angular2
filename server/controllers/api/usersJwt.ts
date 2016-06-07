@@ -35,3 +35,5 @@ router.post('/', (req, res, next) => {
 export = router;
 
 //https://gist.github.com/brennanMKE/ee8ea002d305d4539ef6
+//https://github.com/ncb000gt/node.bcrypt.js/issues/340
+//https://www.microsoft.com/pl-pl/download/details.aspx?id=48145

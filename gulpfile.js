@@ -8,16 +8,16 @@ var bower = require('gulp-bower');
  
 gulp.task('bower', function() {
   return bower('./bower_components')
-    .pipe(gulp.dest('./app/libs/'))
+    .pipe(gulp.dest('./src/libs/'))
 });
  
 
 gulp.task('buildClient', function () {
 	var tsProject = ts.createProject('./tsconfig.json');
-	var tsResult =  gulp.src(['./typings/main.d.ts','./app/**/*.ts'])
+	var tsResult =  gulp.src(['./typings/main.d.ts','./src/**/*.ts'])
 		.pipe(ts(tsProject));
 		
-		return tsResult.js.pipe(gulp.dest('./app'));
+		return tsResult.js.pipe(gulp.dest('./src'));
 });
  
 gulp.task('buildServer', function () {
@@ -28,12 +28,12 @@ gulp.task('buildServer', function () {
 		return tsResult.js.pipe(gulp.dest('./server'));
 });
 
-gulp.task('server', function() {
+gulp.task('server',['buildClient', 'buildServer'], function() {
 	var server = gls.new('./server/server.js');
     server.start();
 });
 
-gulp.task("default", ['bower', 'buildClient', 'buildServer','server']);
+gulp.task("default", ['bower', 'server']);
 
 /* autoprefixer sample work */
 /*gulp.task('sass', function () {

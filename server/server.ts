@@ -4,7 +4,7 @@ import path = require('path');
 let port: number = process.env.PORT || 3000;
 let app = express();
  
-app.use('/app', express.static(path.resolve(__dirname, '/../app')));
+app.use('/src', express.static(path.resolve(__dirname, '/../app')));
 app.use('/libs', express.static(path.resolve(__dirname, 'libs')));
 
 let dbURI = 'mongodb://localhost:27017/cmsDB'; 
@@ -30,11 +30,11 @@ process.on('SIGINT', function() {
  
  
 let renderIndex = (req: express.Request, res: express.Response) => {
-    res.sendFile(path.resolve(__dirname, '/../index.html'));
+    res.sendFile(path.resolve(__dirname, '/../src/index.html'));
 }
 
-app.use('/api/sessions', require('./controllers/api/sessions'));
-app.use('/api/users', require('./controllers/api/users'));
+app.use('/api/sessions', require('./controllers/api/sessionsJwt'));
+app.use('/api/users', require('./controllers/api/usersJwt'));
 
 app.get('/*', renderIndex);
  
