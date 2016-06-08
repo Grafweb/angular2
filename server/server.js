@@ -26,8 +26,8 @@ process.on('SIGINT', function () {
 var renderIndex = function (req, res) {
     res.sendFile(path.resolve(__dirname, '/../src/index.html'));
 };
-app.use('/api/sessions', require('./controllers/api/sessionsJwt'));
-app.use('/api/users', require('./controllers/api/usersJwt'));
+// app.use('/api/sessions', require('./controllers/api/sessionsJwt'));
+// app.use('/api/users', require('./controllers/api/usersJwt'));
 app.get('/*', renderIndex);
 var server = app.listen(port, function () {
     var host = server.address().address;

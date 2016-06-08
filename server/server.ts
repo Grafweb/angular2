@@ -1,6 +1,8 @@
 import express = require('express');
 import mongoose = require('mongoose');
 import path = require('path');
+import crypto = require('crypto');
+
 let port: number = process.env.PORT || 3000;
 let app = express();
  
@@ -33,8 +35,8 @@ let renderIndex = (req: express.Request, res: express.Response) => {
     res.sendFile(path.resolve(__dirname, '/../src/index.html'));
 }
 
-app.use('/api/sessions', require('./controllers/api/sessionsJwt'));
-app.use('/api/users', require('./controllers/api/usersJwt'));
+// app.use('/api/sessions', require('./controllers/api/sessionsJwt'));
+// app.use('/api/users', require('./controllers/api/usersJwt'));
 
 app.get('/*', renderIndex);
  
