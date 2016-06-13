@@ -5,9 +5,12 @@ import crypto = require('crypto');
 
 let port: number = process.env.PORT || 3000;
 let app = express();
- 
-app.use('/src', express.static(path.resolve(__dirname, '/../app')));
-app.use('/libs', express.static(path.resolve(__dirname, 'libs')));
+
+app.use('/src', express.static(path.resolve(__dirname + '/../src/')));
+app.use('/node_modules', express.static(path.resolve(__dirname + '/../node_modules')));
+//app.use('/libs', express.static(path.resolve(__dirname + '/../src/libs')));
+
+console.info("path.resolve(__dirname + 'libs') %s - %s", path.resolve(__dirname + '/../src/libs'), __dirname);
 
 let dbURI = 'mongodb://localhost:27017/cmsDB'; 
 mongoose.connect(dbURI); 
@@ -32,7 +35,7 @@ process.on('SIGINT', function() {
  
  
 let renderIndex = (req: express.Request, res: express.Response) => {
-    res.sendFile(path.resolve(__dirname, '/../src/index.html'));
+    res.sendFile(path.resolve(__dirname  + '/../src/index.html'));
 }
 
 // app.use('/api/sessions', require('./controllers/api/sessionsJwt'));

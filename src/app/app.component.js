@@ -1,4 +1,4 @@
-System.register(['@angular/core'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router-deprecated', './login/login.component', './login/login-register.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,12 +10,21 @@ System.register(['@angular/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, router_deprecated_1, login_component_1, login_register_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (router_deprecated_1_1) {
+                router_deprecated_1 = router_deprecated_1_1;
+            },
+            function (login_component_1_1) {
+                login_component_1 = login_component_1_1;
+            },
+            function (login_register_component_1_1) {
+                login_register_component_1 = login_register_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -24,8 +33,14 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<h1>My First Angular 2 App</h1>'
-                    }), 
+                        template: "<h1>My First Angular 2 App 2</h1>\n              <router-outlet></router-outlet>",
+                        directives: [router_deprecated_1.ROUTER_DIRECTIVES]
+                    }),
+                    router_deprecated_1.RouteConfig([
+                        //{ path: '/dashboard', component: DashboardComponent }, // , useAsDefault: true}, // coming soon
+                        { path: '/login', name: 'Login', component: login_component_1.LoginComponent },
+                        { path: '/login-register', name: 'LoginRegister', component: login_register_component_1.LoginRegisterComponent }
+                    ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
