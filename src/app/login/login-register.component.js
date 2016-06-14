@@ -24,7 +24,8 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                 LoginRegisterComponent = __decorate([
                     core_1.Component({
                         selector: 'login-register',
-                        templateUrl: '/src/app/login/login-register.component.html'
+                        // template: "register"
+                        templateUrl: 'src/app/login/login-register.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], LoginRegisterComponent);

@@ -1,7 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Directive } from '@angular/core';
+import { NgForm }    from '@angular/common';
+import {Http, HTTP_PROVIDERS} from '@angular/http';
+
 
 @Component({
     selector: 'login-register',
-    templateUrl: '/src/app/login/login-register.component.html'
+    // template: "register"
+    templateUrl: 'src/app/login/login-register.component.html'
 })
-export class LoginRegisterComponent {}
+export class LoginRegisterComponent {
+    onSubmit() {
+        
+    }
+}
