@@ -12,26 +12,26 @@ app.use('/node_modules', express.static(path.resolve(__dirname + '/../node_modul
 
 console.info("path.resolve(__dirname + 'libs') %s - %s", path.resolve(__dirname + '/../src/libs'), __dirname);
 
-let dbURI = 'mongodb://localhost:27017/cmsDB'; 
-mongoose.connect(dbURI); 
-mongoose.connection.on('connected', function () {  
-  console.log('Mongoose default connection open to ' + dbURI);
-}); 
+// let dbURI = 'mongodb://localhost:27017/cmsDB'; 
+// mongoose.connect(dbURI); 
+// mongoose.connection.on('connected', function () {  
+//   console.log('Mongoose default connection open to ' + dbURI);
+// }); 
 
-mongoose.connection.on('error',function (err) {  
-  console.log('Mongoose default connection error: ' + err);
-}); 
+// mongoose.connection.on('error',function (err) {  
+//   console.log('Mongoose default connection error: ' + err);
+// }); 
 
-mongoose.connection.on('disconnected', function () {  
-  console.log('Mongoose default connection disconnected'); 
-});
+// mongoose.connection.on('disconnected', function () {  
+//   console.log('Mongoose default connection disconnected'); 
+// });
 
-process.on('SIGINT', function() {  
-  mongoose.connection.close(function () { 
-    console.log('Mongoose default connection disconnected through app termination'); 
-    process.exit(0); 
-  }); 
-}); 
+// process.on('SIGINT', function() {  
+//   mongoose.connection.close(function () { 
+//     console.log('Mongoose default connection disconnected through app termination'); 
+//     process.exit(0); 
+//   }); 
+// }); 
  
  
 let renderIndex = (req: express.Request, res: express.Response) => {
@@ -42,6 +42,10 @@ let renderIndex = (req: express.Request, res: express.Response) => {
 // app.use('/api/users', require('./controllers/api/usersJwt'));
 
 app.get('/*', renderIndex);
+
+app.post('/form', (req, res) => {
+  console.log(req.body);
+});
  
 let server = app.listen(port, function() {
     let host = server.address().address;

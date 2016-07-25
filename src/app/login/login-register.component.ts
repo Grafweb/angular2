@@ -1,6 +1,7 @@
 import { Component, OnInit, Directive } from '@angular/core';
 import { NgForm }    from '@angular/common';
 import {Http, HTTP_PROVIDERS} from '@angular/http';
+import {HeroService} from './shared/login-register.service';
 
 
 @Component({
@@ -9,7 +10,13 @@ import {Http, HTTP_PROVIDERS} from '@angular/http';
     templateUrl: 'src/app/login/login-register.component.html'
 })
 export class LoginRegisterComponent {
-    onSubmit() {
-        
+
+constructor ( private heroService: HeroService) {
+
+}
+
+    onSubmit(data) {
+     //Http.post();   
+     this.heroService.sendtHeroes(data);
     }
 }
