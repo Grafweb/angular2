@@ -1,22 +1,28 @@
 import { Component, OnInit, Directive } from '@angular/core';
 import { NgForm }    from '@angular/common';
-import {Http, HTTP_PROVIDERS} from '@angular/http';
-import {HeroService} from './shared/login-register.service';
+import { Http, Response, Headers, RequestOptions, HTTP_PROVIDERS } from '@angular/http';
+import { HeroService } from './shared/login-register.service';
+import { LoginRegister } from './login-register';
 
 
 @Component({
     selector: 'login-register',
     // template: "register"
-    templateUrl: 'src/app/login/login-register.component.html'
+    templateUrl: 'src/app/login/login-register.component.html',
+    providers: [HeroService]
 })
-export class LoginRegisterComponent {
+export class LoginRegisterComponent { 
 
 constructor ( private heroService: HeroService) {
-
+    // this.name = "";
+    // this.surname = "";
 }
 
-    onSubmit(data) {
+    login = new LoginRegister();
+
+    onSubmit() {
      //Http.post();   
-     this.heroService.sendtHeroes(data);
+     console.info("wykonałem" + this.login.name);
+     this.heroService.sendtHeroes(this.login);
     }
 }

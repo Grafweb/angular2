@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/http'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxjs/add/operator/catch', 'rxjs/add/operator/toPromise', 'rxjs/Observable'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/http'], function(exports_1, context_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
+    var core_1, http_1, Observable_1;
     var HeroService;
     return {
         setters:[
@@ -19,15 +19,48 @@ System.register(['@angular/core', '@angular/http'], function(exports_1, context_
             },
             function (http_1_1) {
                 http_1 = http_1_1;
+            },
+            function (_1) {},
+            function (_2) {},
+            function (_3) {},
+            function (Observable_1_1) {
+                Observable_1 = Observable_1_1;
             }],
         execute: function() {
             HeroService = (function () {
                 function HeroService(http) {
                     this.http = http;
-                    this.heroesUrl = 'app/heroes.json';
+                    this.heroesUrl = 'http://localhost:3000/form';
                 }
                 HeroService.prototype.sendtHeroes = function (data) {
-                    this.http.post(this.heroesUrl, data);
+                    var _this = this;
+                    console.info("wykonałem send node ssa" + this.heroesUrl);
+                    console.dir(data);
+                    var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+                    var options = new http_1.RequestOptions({ headers: headers });
+                    //http://coenraets.org/blog/2016/02/angular2-ionic2-rest-services/
+                    //http://stackoverflow.com/questions/38043247/angular-2-http-post-request-is-not-being-called-out
+                    this.http.post(this.heroesUrl, JSON.stringify(data), options).map(this.extractData)
+                        .catch(this.handleError).subscribe(function (data) { return _this.saveJwt(data.name); }, function (err) { return _this.logError(err); });
+                };
+                HeroService.prototype.saveJwt = function (jwt) {
+                    if (jwt)
+                        localStorage.setItem('id_token', jwt);
+                };
+                HeroService.prototype.logError = function (err) {
+                    console.log(err);
+                };
+                HeroService.prototype.extractData = function (res) {
+                    console.info("test whether this method is reached");
+                    var body = res.json();
+                    return body.data || {};
+                };
+                HeroService.prototype.handleError = function (error) {
+                    console.info("test whether this method is reached");
+                    var errMsg = (error.message) ? error.message :
+                        error.status ? error.status + " - " + error.statusText : 'Server error';
+                    console.error(errMsg); // log to console instead
+                    return Observable_1.Observable.throw(errMsg);
                 };
                 HeroService = __decorate([
                     core_1.Injectable(), 

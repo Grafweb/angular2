@@ -1,4 +1,4 @@
-System.register(['@angular/core', './shared/login-register.service'], function(exports_1, context_1) {
+System.register(['@angular/core', './shared/login-register.service', './login-register'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', './shared/login-register.service'], function(e
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, login_register_service_1;
+    var core_1, login_register_service_1, login_register_1;
     var LoginRegisterComponent;
     return {
         setters:[
@@ -19,21 +19,29 @@ System.register(['@angular/core', './shared/login-register.service'], function(e
             },
             function (login_register_service_1_1) {
                 login_register_service_1 = login_register_service_1_1;
+            },
+            function (login_register_1_1) {
+                login_register_1 = login_register_1_1;
             }],
         execute: function() {
             LoginRegisterComponent = (function () {
                 function LoginRegisterComponent(heroService) {
                     this.heroService = heroService;
+                    this.login = new login_register_1.LoginRegister();
+                    // this.name = "";
+                    // this.surname = "";
                 }
-                LoginRegisterComponent.prototype.onSubmit = function (data) {
+                LoginRegisterComponent.prototype.onSubmit = function () {
                     //Http.post();   
-                    this.heroService.sendtHeroes(data);
+                    console.info("wykonałem" + this.login.name);
+                    this.heroService.sendtHeroes(this.login);
                 };
                 LoginRegisterComponent = __decorate([
                     core_1.Component({
                         selector: 'login-register',
                         // template: "register"
-                        templateUrl: 'src/app/login/login-register.component.html'
+                        templateUrl: 'src/app/login/login-register.component.html',
+                        providers: [login_register_service_1.HeroService]
                     }), 
                     __metadata('design:paramtypes', [login_register_service_1.HeroService])
                 ], LoginRegisterComponent);

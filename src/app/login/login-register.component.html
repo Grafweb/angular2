@@ -1,15 +1,15 @@
-<form #f="ngForm" (ngSubmit)="onSubmit()">
+<form #f="ngForm" >
     <label for="name">Name:</label>
-    <input type="text" id="name">
+    <input type="text" id="name" [(ngModel)]="login.name">
 
     <label for="name">Surname:</label>
-    <input type="text" id="surname">
+    <input type="text" id="surname" [(ngModel)]="login.surname">
 
     <label for="name">Email:</label>
-    <input type="text" id="email">
+    <input type="text" id="email" [(ngModel)]="login.email">
 
     <label for="password">Password:</label>
-    <input type="password" id="password">
+    <input type="password" id="password" [(ngModel)]="login.password">
 
-    <button type="submit" class="btn btn-default">Register!</button>
+    <button type="submit" (click)="onSubmit()" class="btn btn-default">Register!</button>
 </form>

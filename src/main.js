@@ -17,7 +17,7 @@ System.register(['@angular/platform-browser-dynamic', '@angular/router-deprecate
                 app_component_1 = app_component_1_1;
             }],
         execute: function() {
-            platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [router_deprecated_1.ROUTER_PROVIDERS, http_1.HTTP_PROVIDERS]);
+            platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [router_deprecated_1.ROUTER_PROVIDERS, http_1.HTTP_PROVIDERS, http_1.HTTP_BINDINGS]);
         }
     }
 });
