@@ -3,6 +3,7 @@ var express = require('express');
 var mongooseConnect = require('./shared/mongoDB');
 var path = require('path');
 var bodyParser = require('body-parser');
+var saveData = require('./auth/models/userRegistry');
 var port = process.env.PORT || 3000;
 var app = express();
 app.use('/src', express.static(path.resolve(__dirname + '/../src/')));
@@ -20,6 +21,7 @@ var renderIndex = function (req, res) {
 app.get('/*', renderIndex);
 app.post('/form', function (req, res) {
     console.log("req.body " + req.body);
+    saveData(req.body);
 });
 var server = app.listen(port, function () {
     var host = server.address().address;

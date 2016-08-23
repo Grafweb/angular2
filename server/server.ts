@@ -4,6 +4,7 @@ import mongooseConnect = require('./shared/mongoDB');
 import path = require('path');
 import crypto = require('crypto');
 import bodyParser = require('body-parser');
+import saveData = require('./auth/models/userRegistry');
 
 let port: number = process.env.PORT || 3000;
 let app = express();
@@ -28,7 +29,8 @@ let renderIndex = (req: express.Request, res: express.Response) => {
 app.get('/*', renderIndex);
 
 app.post('/form', (req, res) => {
-  console.log("req.body " + req.body);
+console.log("req.body " + req.body);
+saveData(req.body);
 });
  
 let server = app.listen(port, function() {

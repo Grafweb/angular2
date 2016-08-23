@@ -1,4 +1,6 @@
 import mongoose = require('mongoose');
+import handleError = require('../../shared/error');
+
 
 interface IUser extends mongoose.Document {
   id: string;
@@ -9,11 +11,19 @@ interface IUser extends mongoose.Document {
 }
 
 
-let userRegistry = new mongoose.Schema({  
-    username: String,
-    surname: String,
-    email: String,
-    password: {type: String, select: false} 
+let userRegistry = new mongoose.Schema({
+  username: String,
+  surname: String, 
+  email: String,
+  password: { type: String, select: false }
 });
 
-export let UserRegistryModel = mongoose.model< IUser >('User', userRegistry);
+let UserRegistryModel = mongoose.model<IUser>('User', userRegistry);
+
+
+export = function save(data) {
+  let dataSave = new UserRegistryModel(data);
+  dataSave.save(function (err:string) {
+    if (err) handleError(err);
+  });
+}
