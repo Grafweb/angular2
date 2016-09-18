@@ -1,5 +1,7 @@
 import mongoose = require('mongoose');
 import handleError = require('../../shared/error');
+import bcrypt = require('bcrypt');
+//import { crypt } from 
 
 
 interface IUser extends mongoose.Document {
@@ -18,12 +20,16 @@ let userRegistry = new mongoose.Schema({
   password: { type: String, select: false }
 });
 
-let UserRegistryModel = mongoose.model<IUser>('User', userRegistry);
+export let UserRegistryModel = mongoose.model<IUser>('User', userRegistry);
 
+// export function save(data) {
+// let hash =  crypto.createHash('sha256');
 
-export = function save(data) {
-  let dataSave = new UserRegistryModel(data);
-  dataSave.save(function (err:string) {
-    if (err) handleError(err);
-  });
-}
+//   hash.update(data.password);
+//   data.password = hash.digest('hex');
+//   console.info(data.password + " - data.password");
+//   let dataSave = new UserRegistryModel(data);
+//   dataSave.save(function (err:string) {
+//     if (err) handleError(err);
+//   });
+// }

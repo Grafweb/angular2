@@ -5,25 +5,29 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import { Observable }     from 'rxjs/Observable';
 
-
 @Injectable()
 
-export class HeroService {
-    private heroesUrl = 'http://localhost:3000/register';
+export class LoginService {
+    private loginUrl = 'http://localhost:3000/logins';
     errorMessage: string;
 
     constructor(private http: Http) {
-
-
     }
-    sendtHeroes(data) {
-        console.info("wykonałem send node ssa" + this.heroesUrl);
+
+    sendHeroes(data) {
+        console.info("wykonałem send node ssa" + this.loginUrl);
         console.dir(data);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        this.http.post(this.heroesUrl, JSON.stringify(data), options).map(this.extractData)
-        .catch(this.handleError).subscribe(
-                data => this.saveJwt(data.username),
+        //http://coenraets.org/blog/2016/02/angular2-ionic2-rest-services/
+        //http://stackoverflow.com/questions/38043247/angular-2-http-post-request-is-not-being-called-out
+        this.http.post(this.loginUrl, JSON.stringify(data), options).toPromise().then(this.extractData)
+        .catch(this.handleError).then(
+                tok => {
+                    console.info("data" + tok);
+                    console.dir(tok);
+                    //this.saveJwt(data.username)
+                },
                 err => this.logError(err)
             );
     }
@@ -33,13 +37,15 @@ export class HeroService {
     }
 
     logError(err: any) {
-        console.log(err);
+        console.log("To jest dział err" + err);
     }
 
     private extractData(res: Response) {
         console.info("test whether this method is reached");
+        console.dir(res);
 
         let body = res.json();
+        console.dir(body.data);
         return body.data || {};
     }
 

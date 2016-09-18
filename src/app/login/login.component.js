@@ -1,4 +1,4 @@
-System.register(['@angular/core'], function(exports_1, context_1) {
+System.register(['@angular/core', './shared/login.service', './login'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,24 +10,37 @@ System.register(['@angular/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, login_service_1, login_1;
     var LoginComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (login_service_1_1) {
+                login_service_1 = login_service_1_1;
+            },
+            function (login_1_1) {
+                login_1 = login_1_1;
             }],
         execute: function() {
             LoginComponent = (function () {
-                function LoginComponent() {
+                function LoginComponent(LoginService) {
+                    this.LoginService = LoginService;
+                    this.login = new login_1.Login();
                 }
+                LoginComponent.prototype.submit = function (data) {
+                    console.dir(this.login);
+                    this.LoginService.sendHeroes(this.login);
+                };
                 LoginComponent = __decorate([
                     core_1.Component({
                         selector: 'toh-login',
                         // template: "ds"
                         templateUrl: 'src/app/login/login.component.html',
+                        providers: [login_service_1.LoginService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [login_service_1.LoginService])
                 ], LoginComponent);
                 return LoginComponent;
             }());

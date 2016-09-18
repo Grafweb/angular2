@@ -33,7 +33,7 @@ System.register(['@angular/core', './shared/login-register.service', './login-re
                 }
                 LoginRegisterComponent.prototype.onSubmit = function () {
                     //Http.post();   
-                    console.info("wykonałem" + this.login.name);
+                    console.info("wykonałem" + this.login.username);
                     this.heroService.sendtHeroes(this.login);
                 };
                 LoginRegisterComponent = __decorate([

@@ -7,7 +7,7 @@ System.register([], function(exports_1, context_1) {
         execute: function() {
             LoginRegister = (function () {
                 function LoginRegister() {
-                    this.name;
+                    this.username;
                     this.surname;
                     this.email;
                     this.password;

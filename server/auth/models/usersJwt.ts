@@ -12,5 +12,4 @@ let user = new mongoose.Schema({
     password: {type: String, select: false} 
 });
 
-let UserModel = mongoose.model< IUser >('User', user);
-export =  UserModel;
+export let UserModel = mongoose.model< IUser >('User', user);

@@ -22,7 +22,7 @@ constructor ( private heroService: HeroService) {
 
     onSubmit() {
      //Http.post();   
-     console.info("wykonałem" + this.login.name);
+     console.info("wykonałem" + this.login.username);
      this.heroService.sendtHeroes(this.login);
     }
 }

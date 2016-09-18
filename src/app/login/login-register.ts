@@ -1,11 +1,11 @@
 export class LoginRegister {
-    name: string;
+    username: string;
     surname: string; 
     email: string; 
     password: string;
 
     constructor ()  {
-        this.name;
+        this.username;
         this.surname; 
         this.email; 
         this.password;

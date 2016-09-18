@@ -4,16 +4,23 @@ import mongooseConnect = require('./shared/mongoDB');
 import path = require('path');
 import crypto = require('crypto');
 import bodyParser = require('body-parser');
-import saveData = require('./auth/models/userRegistry');
+import { UserRegistryModel } from './auth/models/userRegistry';
+import sessionsJwt from './auth/sessionsJwt';
+import usersJwt from './auth/usersJwt';
 
 let port: number = process.env.PORT || 3000;
 let app = express();
 
 app.use('/src', express.static(path.resolve(__dirname + '/../src/')));
 app.use('/node_modules', express.static(path.resolve(__dirname + '/../node_modules')));
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());     
 app.use(bodyParser.urlencoded({ extended: true })); 
+
+app.use('/logins', sessionsJwt);
+app.use('/register', usersJwt);
 //app.use('/libs', express.static(path.resolve(__dirname + '/../src/libs')));
+
+
 
 console.info("path.resolve(__dirname + 'libs') %s - %s", path.resolve(__dirname + '/../src/libs'), __dirname);
 
@@ -28,10 +35,15 @@ let renderIndex = (req: express.Request, res: express.Response) => {
 
 app.get('/*', renderIndex);
 
-app.post('/form', (req, res) => {
-console.log("req.body " + req.body);
-saveData(req.body);
-});
+// app.post('/form', (req, res) => {
+// console.log("req.body " + req.body);
+// //new saveData.save(req.body);
+// });
+
+// app.post('/login', (req, res) => {
+// console.log("req.body " + req.body);
+// new saveData.save(req.body);
+// });
  
 let server = app.listen(port, function() {
     let host = server.address().address;
