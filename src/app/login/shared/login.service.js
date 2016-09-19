@@ -58,8 +58,8 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     console.info("test whether this method is reached");
                     console.dir(res);
                     var body = res.json();
-                    console.dir(body.data);
-                    return body.data || {};
+                    console.dir(body);
+                    return body || {};
                 };
                 LoginService.prototype.handleError = function (error) {
                     console.info("test whether this method is reached");

@@ -45,8 +45,8 @@ export class LoginService {
         console.dir(res);
 
         let body = res.json();
-        console.dir(body.data);
-        return body.data || {};
+        console.dir(body);
+        return body || {};
     }
 
     private handleError(error: any) {
