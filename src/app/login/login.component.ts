@@ -18,7 +18,7 @@ export class LoginComponent {
 
     submit(data) {
         console.dir(this.login);
-        this.LoginService.sendHeroes(this.login);
+        this.LoginService.session(this.login);
     }
 
 }

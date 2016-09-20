@@ -9,12 +9,13 @@ import { Observable }     from 'rxjs/Observable';
 
 export class LoginService {
     private loginUrl = 'http://localhost:3000/logins';
+    private getLoginUrl = 'http://localhost:3000/user';
     errorMessage: string;
 
     constructor(private http: Http) {
     }
 
-    sendHeroes(data) {
+    session(data) {
         console.info("wykonałem send node ssa" + this.loginUrl);
         console.dir(data);
         let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -30,6 +31,12 @@ export class LoginService {
                 },
                 err => this.logError(err)
             );
+    }
+
+    getUser(token) {
+        let headers = new Headers({ 'X-Auth': token });
+        let options = new RequestOptions({ headers: headers });
+        this.http.get(this.getLoginUrl, options);
     }
 
     saveJwt(jwt: string) {

@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.use('/logins', sessionsJwt);
-app.use('/register', usersJwt);
+app.use('/user', usersJwt);
 //app.use('/libs', express.static(path.resolve(__dirname + '/../src/libs')));
 
 

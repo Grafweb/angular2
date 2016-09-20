@@ -14,16 +14,16 @@ interface userSch {
 
 let router = app.Router();
 
-// router.get('/', (req, res, next) => {
-//   if (!req.headers['x-auth']) {
-//     return res.send(401)
-//   }
-//   let auth = jwt.decode(req.headers['x-auth'], config.secret)
-//   UserModel.findOne({username: auth.username}, (err, user) => {
-//     if (err) { return next(err) }
-//     res.json(user)
-//   })
-// })
+router.get('/', (req, res, next) => {
+  if (!req.headers['x-auth']) {
+    return res.send(401)
+  }
+  let auth = jwt.decode(req.headers['x-auth'], config.secret)
+  UserRegistryModel.findOne({username: auth.username}, (err, user) => {
+    if (err) { return next(err) }
+    res.json(user)
+  })
+})
 router.use(function timeLog(req, res, next) {
   next();
 });

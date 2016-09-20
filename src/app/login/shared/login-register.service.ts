@@ -9,7 +9,7 @@ import { Observable }     from 'rxjs/Observable';
 @Injectable()
 
 export class HeroService {
-    private heroesUrl = 'http://localhost:3000/register';
+    private heroesUrl = 'http://localhost:3000/user';
     errorMessage: string;
 
     constructor(private http: Http) {
