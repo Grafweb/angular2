@@ -31,8 +31,9 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                 function LoginService(http) {
                     this.http = http;
                     this.loginUrl = 'http://localhost:3000/logins';
+                    this.getLoginUrl = 'http://localhost:3000/user';
                 }
-                LoginService.prototype.sendHeroes = function (data) {
+                LoginService.prototype.session = function (data) {
                     var _this = this;
                     console.info("wykonałem send node ssa" + this.loginUrl);
                     console.dir(data);
@@ -44,6 +45,18 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                         .catch(this.handleError).then(function (tok) {
                         console.info("data" + tok);
                         console.dir(tok);
+                        _this.getUser(tok);
+                        //this.saveJwt(data.username)
+                    }, function (err) { return _this.logError(err); });
+                };
+                LoginService.prototype.getUser = function (token) {
+                    var _this = this;
+                    console.info("token" + token);
+                    var headers = new http_1.Headers({ 'X-Auth': token });
+                    var options = new http_1.RequestOptions({ headers: headers });
+                    return this.http.get(this.getLoginUrl, options).map(this.extractData)
+                        .subscribe(function (tok) {
+                        console.info("data2" + tok);
                         //this.saveJwt(data.username)
                     }, function (err) { return _this.logError(err); });
                 };

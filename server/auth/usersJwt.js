@@ -1,19 +1,23 @@
 "use strict";
 var app = require('express');
+var jwt = require('jwt-simple');
+var config = require('./config/keyJwt');
 var handleError = require('../shared/error');
 var userRegistry_1 = require('./models/userRegistry');
 var crypto_1 = require('../shared/crypto');
 var router = app.Router();
-// router.get('/', (req, res, next) => {
-//   if (!req.headers['x-auth']) {
-//     return res.send(401)
-//   }
-//   let auth = jwt.decode(req.headers['x-auth'], config.secret)
-//   UserModel.findOne({username: auth.username}, (err, user) => {
-//     if (err) { return next(err) }
-//     res.json(user)
-//   })
-// })
+router.get('/', function (req, res, next) {
+    if (!req.headers['x-auth']) {
+        return res.send(401);
+    }
+    var auth = jwt.decode(req.headers['x-auth'], config.secret);
+    userRegistry_1.UserRegistryModel.findOne({ username: auth.username }, function (err, user) {
+        if (err) {
+            return next(err);
+        }
+        res.json(user);
+    });
+});
 router.use(function timeLog(req, res, next) {
     next();
 });

@@ -27,6 +27,7 @@ export class LoginService {
                 tok => {
                     console.info("data" + tok);
                     console.dir(tok);
+                    this.getUser(tok);
                     //this.saveJwt(data.username)
                 },
                 err => this.logError(err)
@@ -34,9 +35,17 @@ export class LoginService {
     }
 
     getUser(token) {
+        console.info("token" + token);
         let headers = new Headers({ 'X-Auth': token });
         let options = new RequestOptions({ headers: headers });
-        this.http.get(this.getLoginUrl, options);
+       return this.http.get(this.getLoginUrl, options).map(this.extractData)
+                     .subscribe(
+                        tok => {
+                    console.info("data2" + tok);
+                    //this.saveJwt(data.username)
+                },
+                err => this.logError(err)
+                    );
     }
 
     saveJwt(jwt: string) {

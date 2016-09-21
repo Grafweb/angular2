@@ -12,7 +12,7 @@ app.use('/node_modules', express.static(path.resolve(__dirname + '/../node_modul
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/logins', sessionsJwt_1.default);
-app.use('/register', usersJwt_1.default);
+app.use('/user', usersJwt_1.default);
 //app.use('/libs', express.static(path.resolve(__dirname + '/../src/libs')));
 console.info("path.resolve(__dirname + 'libs') %s - %s", path.resolve(__dirname + '/../src/libs'), __dirname);
 mongooseConnect.mongoConnect();

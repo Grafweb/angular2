@@ -31,7 +31,7 @@ System.register(['@angular/core', './shared/login.service', './login'], function
                 }
                 LoginComponent.prototype.submit = function (data) {
                     console.dir(this.login);
-                    this.LoginService.sendHeroes(this.login);
+                    this.LoginService.session(this.login);
                 };
                 LoginComponent = __decorate([
                     core_1.Component({

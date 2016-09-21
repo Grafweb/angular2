@@ -30,7 +30,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
             HeroService = (function () {
                 function HeroService(http) {
                     this.http = http;
-                    this.heroesUrl = 'http://localhost:3000/register';
+                    this.heroesUrl = 'http://localhost:3000/user';
                 }
                 HeroService.prototype.sendtHeroes = function (data) {
                     var _this = this;
