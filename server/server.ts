@@ -7,6 +7,7 @@ import bodyParser = require('body-parser');
 import { UserRegistryModel } from './auth/models/userRegistry';
 import sessionsJwt from './auth/sessionsJwt';
 import usersJwt from './auth/usersJwt';
+import auth from './auth/auth';
 
 let port: number = process.env.PORT || 3000;
 let app = express();
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/logins', sessionsJwt);
 app.use('/user', usersJwt);
+app.use(auth); 
 //app.use('/libs', express.static(path.resolve(__dirname + '/../src/libs')));
 
 

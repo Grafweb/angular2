@@ -11,6 +11,7 @@ export class LoginService {
     private loginUrl = 'http://localhost:3000/logins';
     private getLoginUrl = 'http://localhost:3000/user';
     errorMessage: string;
+    token: string;
 
     constructor(private http: Http) {
     }
@@ -27,16 +28,17 @@ export class LoginService {
                 tok => {
                     console.info("data" + tok);
                     console.dir(tok);
-                    this.getUser(tok);
+                    this.token = tok;
+                    this.getUser();
                     //this.saveJwt(data.username)
                 },
                 err => this.logError(err)
             );
     }
 
-    getUser(token) {
-        console.info("token" + token);
-        let headers = new Headers({ 'X-Auth': token });
+    getUser() {
+        console.info("token" + this.token);
+        let headers = new Headers({ 'X-Auth': this.token });
         let options = new RequestOptions({ headers: headers });
        return this.http.get(this.getLoginUrl, options).map(this.extractData)
                      .subscribe(

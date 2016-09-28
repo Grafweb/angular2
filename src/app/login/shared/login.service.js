@@ -45,14 +45,15 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                         .catch(this.handleError).then(function (tok) {
                         console.info("data" + tok);
                         console.dir(tok);
-                        _this.getUser(tok);
+                        _this.token = tok;
+                        _this.getUser();
                         //this.saveJwt(data.username)
                     }, function (err) { return _this.logError(err); });
                 };
-                LoginService.prototype.getUser = function (token) {
+                LoginService.prototype.getUser = function () {
                     var _this = this;
-                    console.info("token" + token);
-                    var headers = new http_1.Headers({ 'X-Auth': token });
+                    console.info("token" + this.token);
+                    var headers = new http_1.Headers({ 'X-Auth': this.token });
                     var options = new http_1.RequestOptions({ headers: headers });
                     return this.http.get(this.getLoginUrl, options).map(this.extractData)
                         .subscribe(function (tok) {

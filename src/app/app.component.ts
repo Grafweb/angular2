@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 import { LoginComponent } from './login/login.component';
+import { AdminComponent } from './admin/admin.component';
 import { LoginRegisterComponent } from './login/login-register.component';
 
 @Component({
@@ -13,7 +14,8 @@ import { LoginRegisterComponent } from './login/login-register.component';
 @RouteConfig([
   //{ path: '/dashboard', component: DashboardComponent }, // , useAsDefault: true}, // coming soon
   { path: '/login', name: 'Login',  component: LoginComponent },
-  { path: '/login-register', name: 'LoginRegister', component: LoginRegisterComponent }
+  { path: '/login-register', name: 'LoginRegister', component: LoginRegisterComponent },
+  { path: '/admin', name: 'Admin', component: AdminComponent }
 ])
 
 export class AppComponent { }
