@@ -4,10 +4,11 @@ import config = require('./config/keyJwt');
 
 let router = app.Router();
 
-router.get('/', (req, res, next) => {
+router.use((req, res, next) => {
     if (req.headers['x-auth']) {
         let auth = jwt.decode(req.headers['x-auth'], config.secret)
     }
+    console.info("wyk auth");
     next();
 });
 

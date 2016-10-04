@@ -1,5 +1,5 @@
 import { Injectable, Inject }  from '@angular/core';
-import { Http, Response, Headers, RequestOptions, HTTP_PROVIDERS } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';

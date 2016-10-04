@@ -1,9 +1,9 @@
 <form>
     <label for="name">Name:</label>
-    <input type="text" id="name" [(ngModel)]="login.username">
+    <input type="text" id="name" name="name" [(ngModel)]="login.username">
 
     <label for="password">Password:</label>
-    <input type="password" id="password" [(ngModel)]="login.password">
+    <input type="password" name="password" id="password" [(ngModel)]="login.password">
 
     <button type="submit" (click)="submit()" class="btn btn-default">login!</button>
 </form>

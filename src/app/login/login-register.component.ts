@@ -1,6 +1,5 @@
 import { Component, OnInit, Directive } from '@angular/core';
-import { NgForm }    from '@angular/common';
-import { Http, Response, Headers, RequestOptions, HTTP_PROVIDERS } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { HeroService } from './shared/login-register.service';
 import { LoginRegister } from './login-register';
 
