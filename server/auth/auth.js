@@ -4,6 +4,9 @@ var jwt = require('jwt-simple');
 var config = require('./config/keyJwt');
 var router = app.Router();
 router.use(function (req, res, next) {
+    if (!req.headers['x-auth']) {
+        return res.send(401);
+    }
     if (req.headers['x-auth']) {
         var auth = jwt.decode(req.headers['x-auth'], config.secret);
     }

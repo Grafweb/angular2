@@ -32,6 +32,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     this.http = http;
                     this.loginUrl = 'http://localhost:3000/logins';
                     this.getLoginUrl = 'http://localhost:3000/user';
+                    //super();
                 }
                 LoginService.prototype.session = function (data) {
                     var _this = this;
@@ -58,6 +59,8 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     return this.http.get(this.getLoginUrl, options).map(this.extractData)
                         .subscribe(function (tok) {
                         console.info("data2" + tok);
+                        // let headersDefault = new HeadersRequestOptions(this.token)
+                        // this.baseRequestOptions.headers = headers;
                         //this.saveJwt(data.username)
                     }, function (err) { return _this.logError(err); });
                 };
