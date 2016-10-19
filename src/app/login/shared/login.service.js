@@ -59,9 +59,14 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     return this.http.get(this.getLoginUrl, options).map(this.extractData)
                         .subscribe(function (tok) {
                         console.info("data2" + tok);
-                        // let headersDefault = new HeadersRequestOptions(this.token)
+                        var options = new http_1.BaseRequestOptions();
+                        var req = new http_1.Request(options.merge({
+                            headers: headers
+                        }));
+                        console.log('req.method:', req.headers);
                         // this.baseRequestOptions.headers = headers;
                         //this.saveJwt(data.username)
+                        //https://books.google.pl/books?id=9LbjCwAAQBAJ&pg=PA203&lpg=PA203&dq=HttpModule+add+default+angular+2&source=bl&ots=WYebX7w5PM&sig=oPJ4enIkDQhMJqdGdA7pCUatWnU&hl=pl&sa=X&ved=0ahUKEwiIptzBjeDPAhXICCwKHbgqCBk4ChDoAQgjMAE#v=onepage&q=HttpModule%20add%20default%20angular%202&f=false
                     }, function (err) { return _this.logError(err); });
                 };
                 LoginService.prototype.saveJwt = function (jwt) {

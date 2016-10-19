@@ -16,11 +16,14 @@ System.register(['@angular/http'], function(exports_1, context_1) {
         execute: function() {
             HeadersRequestOptions = (function (_super) {
                 __extends(HeadersRequestOptions, _super);
-                function HeadersRequestOptions(token) {
+                function HeadersRequestOptions() {
                     _super.call(this);
-                    this.token = token;
-                    this.headers = new http_1.Headers({ 'X-Auth': this.token });
-                    //this.headers.append('X-Auth', this.token);
+                    //Headers.append("name: string", "value: string")
+                    this.headers = new http_1.Headers({ "X-Auth": 'darek.darek.darek' });
+                    //this.headers.append('X-Auth', "darek.darek.darek");
+                    //this.token = token;
+                    //this.headers = new Headers({'X-Auth': "darek.darek.darek"})
+                    //this.headers.append('X-Auth', "darek.darek.darek");
                     //this.headers.append('foo', 'bar');
                 }
                 return HeadersRequestOptions;
@@ -29,3 +32,4 @@ System.register(['@angular/http'], function(exports_1, context_1) {
         }
     }
 });
+//https://auth0.com/blog/angular-2-series-part-3-using-http/ 

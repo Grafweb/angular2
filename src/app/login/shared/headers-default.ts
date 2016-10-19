@@ -1,12 +1,18 @@
-import {BaseRequestOptions, Request, RequestMethod, Headers} from '@angular/http';
+import {BaseRequestOptions, RequestOptions, RequestOptionsArgs, Request, RequestMethod, Headers} from '@angular/http';
 
 export class HeadersRequestOptions extends BaseRequestOptions {
-    token: string;
-    constructor(token : string) {
+  
+
+  //Headers.append("name: string", "value: string")
+  
+    headers:Headers = new Headers({"X-Auth": 'darek.darek.darek'});
+    
+    constructor() {
         super();
-        this.token = token;
-        this.headers = new Headers({'X-Auth': this.token})
-        //this.headers.append('X-Auth', this.token);
+        //this.headers.append('X-Auth', "darek.darek.darek");
+        //this.token = token;
+        //this.headers = new Headers({'X-Auth': "darek.darek.darek"})
+        //this.headers.append('X-Auth', "darek.darek.darek");
         //this.headers.append('foo', 'bar');
     }
 }

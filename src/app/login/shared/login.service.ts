@@ -1,5 +1,5 @@
 import { Injectable, Inject }  from '@angular/core';
-import { Http, Response, Headers, RequestOptions, BaseRequestOptions } from '@angular/http';
+import {Http, Response, Headers, RequestOptions, Request, RequestMethod, BaseRequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
@@ -46,9 +46,15 @@ export class LoginService { //extends BaseRequestOptions
                      .subscribe(
                         tok => {
                     console.info("data2" + tok);
-                   // let headersDefault = new HeadersRequestOptions(this.token)
+                    var options = new BaseRequestOptions();
+                    var req = new Request(options.merge({
+                    headers: headers
+                    }));
+
+                    console.log('req.method:', req.headers);
                   // this.baseRequestOptions.headers = headers;
                     //this.saveJwt(data.username)
+                    //https://books.google.pl/books?id=9LbjCwAAQBAJ&pg=PA203&lpg=PA203&dq=HttpModule+add+default+angular+2&source=bl&ots=WYebX7w5PM&sig=oPJ4enIkDQhMJqdGdA7pCUatWnU&hl=pl&sa=X&ved=0ahUKEwiIptzBjeDPAhXICCwKHbgqCBk4ChDoAQgjMAE#v=onepage&q=HttpModule%20add%20default%20angular%202&f=false
                 },
                 err => this.logError(err)
                     );
