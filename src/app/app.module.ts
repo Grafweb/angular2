@@ -28,7 +28,10 @@ import { routing } from './app.routing';
                     LoginComponent, 
                     LoginRegisterComponent, 
                     AdminComponent ],
-    providers: [ {provide: RequestOptions, useClass: HeadersRequestOptions}  ],     
+    providers: [ {provide: RequestOptions, useClass: HeadersRequestOptions }  ],     
     bootstrap:    [ AppComponent ]
 })
+
+//providers: [ {provide: RequestOptions, useClass: HeadersRequestOptions }  ],
+
 export class AppModule { }

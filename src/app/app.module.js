@@ -48,6 +48,8 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
                 app_routing_1 = app_routing_1_1;
             }],
         execute: function() {
+            //http://blog.angular-university.io/angular2-ngmodule/
+            //http://stackoverflow.com/questions/34464108/angular2-set-headers-for-every-request
             AppModule = (function () {
                 function AppModule() {
                 }
@@ -55,7 +57,7 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
                     core_1.NgModule({
                         imports: [platform_browser_1.BrowserModule,
                             forms_1.FormsModule,
-                            [{ provide: http_1.RequestOptions, useClass: headers_default_1.HeadersRequestOptions }],
+                            http_1.HttpModule,
                             app_routing_1.routing],
                         declarations: [app_component_1.AppComponent,
                             home_component_1.HomeComponent,

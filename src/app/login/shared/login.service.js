@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxjs/add/operator/catch', 'rxjs/add/operator/toPromise', 'rxjs/Observable'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxjs/add/operator/catch', 'rxjs/add/operator/toPromise', 'rxjs/Observable', './headers-default'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, Observable_1;
+    var core_1, http_1, Observable_1, headers_default_1;
     var LoginService;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
             function (_3) {},
             function (Observable_1_1) {
                 Observable_1 = Observable_1_1;
+            },
+            function (headers_default_1_1) {
+                headers_default_1 = headers_default_1_1;
             }],
         execute: function() {
             LoginService = (function () {
@@ -40,6 +43,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     console.dir(data);
                     var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
                     var options = new http_1.RequestOptions({ headers: headers });
+                    //let options = new RequestOptions({ headers: headers });
                     //http://coenraets.org/blog/2016/02/angular2-ionic2-rest-services/
                     //http://stackoverflow.com/questions/38043247/angular-2-http-post-request-is-not-being-called-out
                     this.http.post(this.loginUrl, JSON.stringify(data), options).toPromise().then(this.extractData)
@@ -53,17 +57,38 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                 };
                 LoginService.prototype.getUser = function () {
                     var _this = this;
-                    console.info("token" + this.token);
-                    var headers = new http_1.Headers({ 'X-Auth': this.token });
-                    var options = new http_1.RequestOptions({ headers: headers });
-                    return this.http.get(this.getLoginUrl, options).map(this.extractData)
+                    var optionsm = new headers_default_1.HeadersRequestOptions();
+                    optionsm.headers.set('x-auth', this.token);
+                    headers_default_1.HeadersRequestOptions.auth = this.token;
+                    // let request = new Request(options);
+                    //var req = new Request(optionsm);
+                    //let hea = optionsm.headers.get('x-auth');
+                    //optionsm.merge({headers: new Headers({ 'x-auth': this.token })});
+                    //var req = new Request();
+                    // optionsm.merge({
+                    // headers: new Headers({ 'x-auth': this.token })
+                    // });
+                    //optionsm
+                    //let headers = new Headers({ 'X-Auth': this.token });
+                    //     let options = new RequestOptions({ headers: headers });
+                    // var options = new BaseRequestOptions();
+                    // var req = new Request(options.merge({
+                    // method: RequestMethod.Get,
+                    // headers: headers
+                    // }));
+                    // console.log('req.method:', req.headers);
+                    console.info("token" + this.token + "-- optionsm ---" + optionsm.headers.get('x-auth')
+                        + "-------");
+                    //let optionsdf = new RequestOptions({ headers: headers });
+                    //this.http.get(this.getLoginUrl).subscribe()
+                    return this.http.get(this.getLoginUrl).map(this.extractData)
                         .subscribe(function (tok) {
                         console.info("data2" + tok);
-                        var options = new http_1.BaseRequestOptions();
-                        var req = new http_1.Request(options.merge({
-                            headers: headers
-                        }));
-                        console.log('req.method:', req.headers);
+                        // var options = new BaseRequestOptions();
+                        // var req = new Request(options.merge({
+                        // headers: new Headers({ 'X-My-Custom-Header': 'Angular' })
+                        // }));
+                        // console.log('req.method:', req.headers);
                         // this.baseRequestOptions.headers = headers;
                         //this.saveJwt(data.username)
                         //https://books.google.pl/books?id=9LbjCwAAQBAJ&pg=PA203&lpg=PA203&dq=HttpModule+add+default+angular+2&source=bl&ots=WYebX7w5PM&sig=oPJ4enIkDQhMJqdGdA7pCUatWnU&hl=pl&sa=X&ved=0ahUKEwiIptzBjeDPAhXICCwKHbgqCBk4ChDoAQgjMAE#v=onepage&q=HttpModule%20add%20default%20angular%202&f=false
