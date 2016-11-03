@@ -1,6 +1,6 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-//HomeComponent
+//HomeComponent111
 
 import { HomeComponent } from './home/home.component';
 

@@ -16,7 +16,7 @@ let router = app.Router();
 
 router.get('/', (req, res, next) => {
   if (!req.headers['x-auth']) {
-    return res.send(401)
+    return res.send(401);
   }
   let auth = jwt.decode(req.headers['x-auth'], config.secret)
   UserRegistryModel.findOne({username: auth.username}, (err, user) => {
