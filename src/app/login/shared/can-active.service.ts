@@ -1,21 +1,22 @@
 import { ModuleWithProviders, Injectable, Inject }  from '@angular/core';
 import { Routes, RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { UserToken }  from './user-token';
 
 
-class UserToken {}
-class Permissions {
+export class Permissions {
+
   canActivate(user: UserToken, id: string): boolean {
     return true;
   }
 }
 @Injectable()
-class CanActivateTeam implements CanActivate {
+export class CanActivateTeam implements CanActivate {
   constructor(private permissions: Permissions, private currentUser: UserToken) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean>|Promise<boolean>|boolean {
-    return this.permissions.canActivate(this.currentUser, route.params.id);
+    return this.permissions.canActivate(this.currentUser, route.params.id;
   }
 }

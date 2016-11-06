@@ -9,6 +9,7 @@ router.use((req, res, next) => {
         return res.send(401);
     }
     if (req.headers['x-auth']) {
+        console.info("jestes zalogowany");
         let auth = jwt.decode(req.headers['x-auth'], config.secret)
     }
     console.info("wyk auth");
