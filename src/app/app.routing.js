@@ -1,7 +1,7 @@
-System.register(['@angular/router', './home/home.component', './login/login.component', './admin/admin.component', './login/login-register.component'], function(exports_1, context_1) {
+System.register(['@angular/router', './home/home.component', './login/login.component', './admin/admin.component', './login/login-register.component', './login/shared/can-active.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, home_component_1, login_component_1, admin_component_1, login_register_component_1;
+    var router_1, home_component_1, login_component_1, admin_component_1, login_register_component_1, can_active_service_1;
     var appRoutes, routing;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['@angular/router', './home/home.component', './login/login.comp
             },
             function (login_register_component_1_1) {
                 login_register_component_1 = login_register_component_1_1;
+            },
+            function (can_active_service_1_1) {
+                can_active_service_1 = can_active_service_1_1;
             }],
         execute: function() {
             appRoutes = [
@@ -36,7 +39,8 @@ System.register(['@angular/router', './home/home.component', './login/login.comp
                 },
                 {
                     path: 'admin',
-                    component: admin_component_1.AdminComponent
+                    component: admin_component_1.AdminComponent,
+                    canActivate: [can_active_service_1.CanActivateTeam]
                 }
             ];
             exports_1("routing", routing = router_1.RouterModule.forRoot(appRoutes));

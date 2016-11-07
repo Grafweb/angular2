@@ -1,5 +1,5 @@
 import { ModuleWithProviders }  from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule,  CanActivate } from '@angular/router';
 //HomeComponent111
 
 import { HomeComponent } from './home/home.component';
@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginRegisterComponent } from './login/login-register.component';
-import { UserToken, Permissions, CanActivateTeam } from './login/shared/can-active.service';
+import { Permissions, CanActivateTeam } from './login/shared/can-active.service';
 
 const appRoutes: Routes = [
   {
@@ -24,8 +24,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminComponent
-    //canActivate: [CanActivateTeam]
+    component: AdminComponent,
+    canActivate: [CanActivateTeam]
   }
 ];
 

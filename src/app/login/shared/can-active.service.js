@@ -1,4 +1,4 @@
-System.register(['@angular/core'], function(exports_1, context_1) {
+System.register(['@angular/core', './user-token'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,20 +10,17 @@ System.register(['@angular/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var UserToken, Permissions, CanActivateTeam;
+    var core_1, user_token_1;
+    var Permissions, CanActivateTeam;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (user_token_1_1) {
+                user_token_1 = user_token_1_1;
             }],
         execute: function() {
-            UserToken = (function () {
-                function UserToken() {
-                }
-                return UserToken;
-            }());
-            exports_1("UserToken", UserToken);
             Permissions = (function () {
                 function Permissions() {
                 }
@@ -39,11 +36,11 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                     this.currentUser = currentUser;
                 }
                 CanActivateTeam.prototype.canActivate = function (route, state) {
-                    return this.permissions.canActivate(this.currentUser, route.params.id);
+                    return this.permissions.canActivate(this.currentUser, "15");
                 };
                 CanActivateTeam = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [Permissions, UserToken])
+                    __metadata('design:paramtypes', [Permissions, user_token_1.UserToken])
                 ], CanActivateTeam);
                 return CanActivateTeam;
             }());

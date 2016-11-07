@@ -17,6 +17,6 @@ export class CanActivateTeam implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean>|Promise<boolean>|boolean {
-    return this.permissions.canActivate(this.currentUser, route.params.id;
+    return this.permissions.canActivate(this.currentUser, "15");
   }
 }
