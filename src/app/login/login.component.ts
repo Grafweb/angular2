@@ -11,6 +11,7 @@ import { Login } from './login';
 export class LoginComponent {
 
     login : Object;
+    user : string;
     
     constructor ( private LoginService: LoginService) {
         this.login = new Login();

@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 import { HeadersRequestOptions }  from './headers-default';
+import { UserToken }  from './user-token';
 
 @Injectable()
 
@@ -31,9 +32,9 @@ export class LoginService { //extends BaseRequestOptions
                 tok => {
                     console.info("data" + tok);
                     console.dir(tok);
-                    this.token = tok;
-                    this.getUser();
-                    //this.saveJwt(data.username)
+                    this.token = tok;
+                    this.saveJwt(tok);
+                    this.getUser();                    
                 },
                 err => this.logError(err)
             );
@@ -43,6 +44,7 @@ export class LoginService { //extends BaseRequestOptions
                     var optionsm = new HeadersRequestOptions();
                     optionsm.headers.set('x-auth', this.token);
                     HeadersRequestOptions.auth = this.token;
+                    UserToken.token = this.token;
        // let request = new Request(options);
                     //var req = new Request(optionsm);
                     //let hea = optionsm.headers.get('x-auth');

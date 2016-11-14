@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxjs/add/operator/catch', 'rxjs/add/operator/toPromise', 'rxjs/Observable', './headers-default'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxjs/add/operator/catch', 'rxjs/add/operator/toPromise', 'rxjs/Observable', './headers-default', './user-token'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, Observable_1, headers_default_1;
+    var core_1, http_1, Observable_1, headers_default_1, user_token_1;
     var LoginService;
     return {
         setters:[
@@ -28,6 +28,9 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
             },
             function (headers_default_1_1) {
                 headers_default_1 = headers_default_1_1;
+            },
+            function (user_token_1_1) {
+                user_token_1 = user_token_1_1;
             }],
         execute: function() {
             LoginService = (function () {
@@ -51,8 +54,8 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                         console.info("data" + tok);
                         console.dir(tok);
                         _this.token = tok;
+                        _this.saveJwt(tok);
                         _this.getUser();
-                        //this.saveJwt(data.username)
                     }, function (err) { return _this.logError(err); });
                 };
                 LoginService.prototype.getUser = function () {
@@ -60,6 +63,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     var optionsm = new headers_default_1.HeadersRequestOptions();
                     optionsm.headers.set('x-auth', this.token);
                     headers_default_1.HeadersRequestOptions.auth = this.token;
+                    user_token_1.UserToken.token = this.token;
                     // let request = new Request(options);
                     //var req = new Request(optionsm);
                     //let hea = optionsm.headers.get('x-auth');

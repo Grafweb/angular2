@@ -12,6 +12,7 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginRegisterComponent } from './login/login-register.component';
 import { HeadersRequestOptions } from './login/shared/headers-default';
 import { Permissions, CanActivateTeam } from './login/shared/can-active.service';
+import { UserToken }  from './login/shared/user-token';
 
 // import { LoginComponent } from './login/login.component';
 import { routing } from './app.routing';
@@ -28,11 +29,12 @@ import { routing } from './app.routing';
                     HomeComponent, 
                     LoginComponent, 
                     LoginRegisterComponent, 
-                    AdminComponent 
+                    AdminComponent
                      ],
     providers: [ {provide: RequestOptions, useClass: HeadersRequestOptions }, 
                 Permissions,
-                CanActivateTeam],     
+                CanActivateTeam,
+                UserToken],     
     bootstrap:    [ AppComponent ]
 })
 

@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', '@angular/http', './app.component', './home/home.component', './login/login.component', './admin/admin.component', './login/login-register.component', './login/shared/headers-default', './login/shared/can-active.service', './app.routing'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', '@angular/http', './app.component', './home/home.component', './login/login.component', './admin/admin.component', './login/login-register.component', './login/shared/headers-default', './login/shared/can-active.service', './login/shared/user-token', './app.routing'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, forms_1, http_1, app_component_1, home_component_1, login_component_1, admin_component_1, login_register_component_1, headers_default_1, can_active_service_1, app_routing_1;
+    var core_1, platform_browser_1, forms_1, http_1, app_component_1, home_component_1, login_component_1, admin_component_1, login_register_component_1, headers_default_1, can_active_service_1, user_token_1, app_routing_1;
     var AppModule;
     return {
         setters:[
@@ -47,6 +47,9 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
             function (can_active_service_1_1) {
                 can_active_service_1 = can_active_service_1_1;
             },
+            function (user_token_1_1) {
+                user_token_1 = user_token_1_1;
+            },
             function (app_routing_1_1) {
                 app_routing_1 = app_routing_1_1;
             }],
@@ -70,7 +73,8 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
                         ],
                         providers: [{ provide: http_1.RequestOptions, useClass: headers_default_1.HeadersRequestOptions },
                             can_active_service_1.Permissions,
-                            can_active_service_1.CanActivateTeam],
+                            can_active_service_1.CanActivateTeam,
+                            user_token_1.UserToken],
                         bootstrap: [app_component_1.AppComponent]
                     }), 
                     __metadata('design:paramtypes', [])

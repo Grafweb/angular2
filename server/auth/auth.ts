@@ -16,4 +16,13 @@ router.use((req, res, next) => {
     next();
 });
 
+
+router.get('/', (req, res, next) => {
+  if (!req.headers['x-auth']) {
+    console.info("niezalogowany");
+  } else {
+      console.info("zalogowany");
+  }   
+});
+
 export default router;  
