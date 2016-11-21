@@ -23,18 +23,19 @@ export class LoginService { //extends BaseRequestOptions
         console.info("wykonałem send node ssa" + this.loginUrl);
         console.dir(data);
         let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    //let options = new RequestOptions({ headers: headers });
+        let options = new RequestOptions({ headers: headers });
+        //let options = new RequestOptions({ headers: headers });
         //http://coenraets.org/blog/2016/02/angular2-ionic2-rest-services/
         //http://stackoverflow.com/questions/38043247/angular-2-http-post-request-is-not-being-called-out
-        this.http.post(this.loginUrl, JSON.stringify(data), options).toPromise().then(this.extractData)
+        return this.http.post(this.loginUrl, JSON.stringify(data), options).toPromise().then(this.extractData)
         .catch(this.handleError).then(
                 tok => {
                     console.info("data" + tok);
                     console.dir(tok);
                     this.token = tok;
                     this.saveJwt(tok);
-                    this.getUser();                    
+                    //this.getUser();
+                    return tok;                    
                 },
                 err => this.logError(err)
             );
@@ -71,10 +72,11 @@ export class LoginService { //extends BaseRequestOptions
         
         //this.http.get(this.getLoginUrl).subscribe()
 
-       return this.http.get(this.getLoginUrl).map(this.extractData)
-                     .subscribe(
+       return this.http.get(this.getLoginUrl).toPromise().then(this.extractData)
+                     .catch(this.handleError).then(
                         tok => {
-                    console.info("data2" + tok);
+                            console.info("data2" + tok);
+                            return tok;
                     // var options = new BaseRequestOptions();
                     // var req = new Request(options.merge({
                     // headers: new Headers({ 'X-My-Custom-Header': 'Angular' })
@@ -84,8 +86,8 @@ export class LoginService { //extends BaseRequestOptions
                   // this.baseRequestOptions.headers = headers;
                     //this.saveJwt(data.username)
                     //https://books.google.pl/books?id=9LbjCwAAQBAJ&pg=PA203&lpg=PA203&dq=HttpModule+add+default+angular+2&source=bl&ots=WYebX7w5PM&sig=oPJ4enIkDQhMJqdGdA7pCUatWnU&hl=pl&sa=X&ved=0ahUKEwiIptzBjeDPAhXICCwKHbgqCBk4ChDoAQgjMAE#v=onepage&q=HttpModule%20add%20default%20angular%202&f=false
-                },
-                err => this.logError(err)
+                        },
+                        err => this.logError(err)
                     );
     }
 

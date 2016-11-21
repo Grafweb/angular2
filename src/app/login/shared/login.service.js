@@ -49,13 +49,14 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     //let options = new RequestOptions({ headers: headers });
                     //http://coenraets.org/blog/2016/02/angular2-ionic2-rest-services/
                     //http://stackoverflow.com/questions/38043247/angular-2-http-post-request-is-not-being-called-out
-                    this.http.post(this.loginUrl, JSON.stringify(data), options).toPromise().then(this.extractData)
+                    return this.http.post(this.loginUrl, JSON.stringify(data), options).toPromise().then(this.extractData)
                         .catch(this.handleError).then(function (tok) {
                         console.info("data" + tok);
                         console.dir(tok);
                         _this.token = tok;
                         _this.saveJwt(tok);
-                        _this.getUser();
+                        //this.getUser();
+                        return tok;
                     }, function (err) { return _this.logError(err); });
                 };
                 LoginService.prototype.getUser = function () {
@@ -85,9 +86,10 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                         + "-------");
                     //let optionsdf = new RequestOptions({ headers: headers });
                     //this.http.get(this.getLoginUrl).subscribe()
-                    return this.http.get(this.getLoginUrl).map(this.extractData)
-                        .subscribe(function (tok) {
+                    return this.http.get(this.getLoginUrl).toPromise().then(this.extractData)
+                        .catch(this.handleError).then(function (tok) {
                         console.info("data2" + tok);
+                        return tok;
                         // var options = new BaseRequestOptions();
                         // var req = new Request(options.merge({
                         // headers: new Headers({ 'X-My-Custom-Header': 'Angular' })

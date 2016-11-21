@@ -1,4 +1,4 @@
-System.register(['@angular/core', './shared/login.service', './login'], function(exports_1, context_1) {
+System.register(['@angular/core', './shared/login.service', './login', 'rxjs/add/operator/map', 'rxjs/add/operator/catch', 'rxjs/add/operator/toPromise'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -22,7 +22,10 @@ System.register(['@angular/core', './shared/login.service', './login'], function
             },
             function (login_1_1) {
                 login_1 = login_1_1;
-            }],
+            },
+            function (_1) {},
+            function (_2) {},
+            function (_3) {}],
         execute: function() {
             LoginComponent = (function () {
                 function LoginComponent(LoginService) {
@@ -30,8 +33,14 @@ System.register(['@angular/core', './shared/login.service', './login'], function
                     this.login = new login_1.Login();
                 }
                 LoginComponent.prototype.submit = function (data) {
+                    var _this = this;
                     console.dir(this.login);
-                    this.LoginService.session(this.login);
+                    this.LoginService.session(this.login).then(function (data) {
+                        _this.LoginService.getUser().then(function (user) {
+                            console.info("data check end" + user);
+                            console.dir(user);
+                        });
+                    });
                 };
                 LoginComponent = __decorate([
                     core_1.Component({
