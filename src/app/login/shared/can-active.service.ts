@@ -8,9 +8,11 @@ import { UserToken }  from './user-token';
 export class Permissions {
 
   canActivate(user: UserToken): boolean {
-    console.info("user" + user);
-
-    return true;
+    if(user) { 
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 @Injectable() 

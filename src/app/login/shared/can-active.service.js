@@ -28,8 +28,12 @@ System.register(['@angular/core', '@angular/http', './user-token'], function(exp
                 function Permissions() {
                 }
                 Permissions.prototype.canActivate = function (user) {
-                    console.info("user" + user);
-                    return true;
+                    if (user) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
                 };
                 return Permissions;
             }());

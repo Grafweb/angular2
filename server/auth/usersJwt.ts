@@ -19,9 +19,9 @@ router.get('/', (req, res, next) => {
     return res.send(401);
   }
   let auth = jwt.decode(req.headers['x-auth'], config.secret)
-  UserRegistryModel.findOne({username: auth.username}, (err, user) => {
+  UserRegistryModel.findOne({username: auth.username},'username surname email', (err, user) => {
     if (err) { return next(err) }
-    res.json(user)
+    res.json(user);
   })
 })
 router.use(function timeLog(req, res, next) {
@@ -40,6 +40,34 @@ router.post('/', (req, res, next) => {
 });
 
 export default router;
+
+
+
+// // find one iphone adventures - iphone adventures??
+// Adventure.findOne({ type: 'iphone' }, function (err, adventure) {});
+
+// // same as above
+// Adventure.findOne({ type: 'iphone' }).exec(function (err, adventure) {});
+
+// // select only the adventures name
+// Adventure.findOne({ type: 'iphone' }, 'name', function (err, adventure) {});
+
+// // same as above
+// Adventure.findOne({ type: 'iphone' }, 'name').exec(function (err, adventure) {});
+
+// // specify options, in this case lean
+// Adventure.findOne({ type: 'iphone' }, 'name', { lean: true }, callback);
+
+// // same as above
+// Adventure.findOne({ type: 'iphone' }, 'name', { lean: true }).exec(callback);
+
+// // chaining findOne queries (same as above)
+// Adventure.findOne({ type: 'iphone' }).select('name').lean().exec(callback);
+
+
+
+
+
 
 //https://www.youtube.com/watch?v=-_QubA7rpcg
 

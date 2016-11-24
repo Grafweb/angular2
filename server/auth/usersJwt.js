@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
         return res.send(401);
     }
     var auth = jwt.decode(req.headers['x-auth'], config.secret);
-    userRegistry_1.UserRegistryModel.findOne({ username: auth.username }, function (err, user) {
+    userRegistry_1.UserRegistryModel.findOne({ username: auth.username }, 'username surname email', function (err, user) {
         if (err) {
             return next(err);
         }
@@ -34,6 +34,20 @@ router.post('/', function (req, res, next) {
 });
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = router;
+// // find one iphone adventures - iphone adventures??
+// Adventure.findOne({ type: 'iphone' }, function (err, adventure) {});
+// // same as above
+// Adventure.findOne({ type: 'iphone' }).exec(function (err, adventure) {});
+// // select only the adventures name
+// Adventure.findOne({ type: 'iphone' }, 'name', function (err, adventure) {});
+// // same as above
+// Adventure.findOne({ type: 'iphone' }, 'name').exec(function (err, adventure) {});
+// // specify options, in this case lean
+// Adventure.findOne({ type: 'iphone' }, 'name', { lean: true }, callback);
+// // same as above
+// Adventure.findOne({ type: 'iphone' }, 'name', { lean: true }).exec(callback);
+// // chaining findOne queries (same as above)
+// Adventure.findOne({ type: 'iphone' }).select('name').lean().exec(callback);
 //https://www.youtube.com/watch?v=-_QubA7rpcg
 //https://gist.github.com/brennanMKE/ee8ea002d305d4539ef6
 //https://github.com/ncb000gt/node.bcrypt.js/issues/340
