@@ -34,8 +34,9 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
             }],
         execute: function() {
             LoginService = (function () {
-                function LoginService(http) {
+                function LoginService(http, usertoken) {
                     this.http = http;
+                    this.usertoken = usertoken;
                     this.loginUrl = 'http://localhost:3000/logins';
                     this.getLoginUrl = 'http://localhost:3000/user';
                     //super();
@@ -52,8 +53,8 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     return this.http.post(this.loginUrl, JSON.stringify(data), options).toPromise().then(this.extractData)
                         .catch(this.handleError).then(function (tok) {
                         console.info("data" + tok);
-                        console.dir(tok);
                         _this.token = tok;
+                        _this.usertoken.token = tok;
                         _this.saveJwt(tok);
                         //this.getUser();
                         return tok;
@@ -62,9 +63,8 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                 LoginService.prototype.getUser = function () {
                     var _this = this;
                     var optionsm = new headers_default_1.HeadersRequestOptions();
-                    optionsm.headers.set('x-auth', this.token);
-                    headers_default_1.HeadersRequestOptions.auth = this.token;
-                    user_token_1.UserToken.token = this.token;
+                    optionsm.headers.set('x-auth', this.usertoken.token);
+                    headers_default_1.HeadersRequestOptions.auth = this.usertoken.token;
                     // let request = new Request(options);
                     //var req = new Request(optionsm);
                     //let hea = optionsm.headers.get('x-auth');
@@ -107,6 +107,9 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                 LoginService.prototype.logError = function (err) {
                     console.log("To jest dział err" + err);
                 };
+                LoginService.prototype.isLoggedin = function () {
+                    console.info("this.token " + this.token);
+                };
                 LoginService.prototype.extractData = function (res) {
                     console.info("test whether this method is reached");
                     console.dir(res);
@@ -123,7 +126,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                 };
                 LoginService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http])
+                    __metadata('design:paramtypes', [http_1.Http, user_token_1.UserToken])
                 ], LoginService);
                 return LoginService;
             }());

@@ -1,3 +1,3 @@
 export class UserToken {
-    static token:string; 
+    token:string; 
 }

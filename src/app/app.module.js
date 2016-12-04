@@ -72,9 +72,9 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
                             admin_component_1.AdminComponent
                         ],
                         providers: [{ provide: http_1.RequestOptions, useClass: headers_default_1.HeadersRequestOptions },
-                            can_active_service_1.Permissions,
-                            can_active_service_1.CanActivateTeam,
-                            user_token_1.UserToken],
+                            user_token_1.UserToken,
+                            can_active_service_1.CanActivateTeam
+                        ],
                         bootstrap: [app_component_1.AppComponent]
                     }), 
                     __metadata('design:paramtypes', [])

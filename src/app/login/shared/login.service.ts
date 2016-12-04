@@ -15,7 +15,7 @@ export class LoginService { //extends BaseRequestOptions
     errorMessage: string;
     token: string;
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private usertoken: UserToken) {
        //super();
     }
 
@@ -31,8 +31,9 @@ export class LoginService { //extends BaseRequestOptions
         .catch(this.handleError).then(
                 tok => {
                     console.info("data" + tok);
-                    console.dir(tok);
+                    //console.dir(tok);
                     this.token = tok;
+                    this.usertoken.token = tok;
                     this.saveJwt(tok);
                     //this.getUser();
                     return tok;                    
@@ -43,9 +44,8 @@ export class LoginService { //extends BaseRequestOptions
 
     getUser() {
                     var optionsm = new HeadersRequestOptions();
-                    optionsm.headers.set('x-auth', this.token);
-                    HeadersRequestOptions.auth = this.token;
-                    UserToken.token = this.token;
+                    optionsm.headers.set('x-auth', this.usertoken.token);
+                    HeadersRequestOptions.auth = this.usertoken.token;
        // let request = new Request(options);
                     //var req = new Request(optionsm);
                     //let hea = optionsm.headers.get('x-auth');
@@ -97,6 +97,10 @@ export class LoginService { //extends BaseRequestOptions
 
     logError(err: any) {
         console.log("To jest dział err" + err);
+    }
+
+    isLoggedin() {
+        console.info("this.token " + this.token);
     }
 
     private extractData(res: Response) {

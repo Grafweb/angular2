@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginRegisterComponent } from './login/login-register.component';
-import { Permissions, CanActivateTeam } from './login/shared/can-active.service';
+import { CanActivateTeam } from './login/shared/can-active.service';
 
 const appRoutes: Routes = [
   {

@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/http', './user-token'], function(exports_1, context_1) {
+System.register(['@angular/core', './login.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,49 +10,43 @@ System.register(['@angular/core', '@angular/http', './user-token'], function(exp
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, user_token_1;
-    var Permissions, CanActivateTeam;
+    var core_1, login_service_1;
+    var CanActivateTeam;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (http_1_1) {
-                http_1 = http_1_1;
-            },
-            function (user_token_1_1) {
-                user_token_1 = user_token_1_1;
+            function (login_service_1_1) {
+                login_service_1 = login_service_1_1;
             }],
         execute: function() {
-            Permissions = (function () {
-                function Permissions() {
-                }
-                Permissions.prototype.canActivate = function (user) {
-                    if (user) {
-                        return true;
-                    }
-                    else {
-                        return false;
-                    }
-                };
-                return Permissions;
-            }());
-            exports_1("Permissions", Permissions);
+            // export class Permissions {
+            //   canActivate(user: UserToken): boolean {
+            //     if(user) { 
+            //       return true;
+            //     } else {
+            //       return false;
+            //     }
+            //   }
+            // }
             CanActivateTeam = (function () {
-                function CanActivateTeam(permissions, currentUser) {
-                    this.permissions = permissions;
-                    this.currentUser = currentUser;
+                function CanActivateTeam(loginService, router) {
+                    this.loginService = loginService;
+                    this.router = router;
                 }
                 CanActivateTeam.prototype.canActivate = function (route, state) {
-                    var url = state.url;
-                    var headers = new http_1.Headers();
-                    console.info("headers.get" + headers.get('x-auth'));
                     //  let url: string = state.url;
-                    return this.permissions.canActivate(user_token_1.UserToken.token);
+                    //  let headers = new Headers();
+                    // console.info("headers.get" + headers.get('x-auth'));
+                    //if(this.permissions.canActivate(this.currentUser.token)) {
+                    //}
+                    //  let url: string = state.url;
+                    return true;
                 };
                 CanActivateTeam = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [Permissions, user_token_1.UserToken])
+                    __metadata('design:paramtypes', [login_service_1.LoginService, Array])
                 ], CanActivateTeam);
                 return CanActivateTeam;
             }());
