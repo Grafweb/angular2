@@ -13,7 +13,7 @@ import { LoginRegisterComponent } from './login/login-register.component';
 import { HeadersRequestOptions } from './login/shared/headers-default';
 import { CanActivateTeam } from './login/shared/can-active.service';
 import { UserToken }  from './login/shared/user-token';
-
+import { LoginService }  from './login/shared/login.service';
 // import { LoginComponent } from './login/login.component';
 import { routing } from './app.routing';
 
@@ -33,6 +33,7 @@ import { routing } from './app.routing';
                      ],
     providers: [ {provide: RequestOptions, useClass: HeadersRequestOptions }, 
                 UserToken,
+                LoginService,
                 CanActivateTeam
                 ],     
     bootstrap:    [ AppComponent ]

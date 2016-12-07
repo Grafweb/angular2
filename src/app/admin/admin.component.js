@@ -1,4 +1,4 @@
-System.register(['@angular/core', './../login/shared/user-token'], function(exports_1, context_1) {
+System.register(['@angular/core', './../login/shared/user-token', './../login/shared/login.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', './../login/shared/user-token'], function(expo
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, user_token_1;
+    var core_1, user_token_1, login_service_1;
     var AdminComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['@angular/core', './../login/shared/user-token'], function(expo
             },
             function (user_token_1_1) {
                 user_token_1 = user_token_1_1;
+            },
+            function (login_service_1_1) {
+                login_service_1 = login_service_1_1;
             }],
         execute: function() {
             AdminComponent = (function () {
@@ -29,7 +32,7 @@ System.register(['@angular/core', './../login/shared/user-token'], function(expo
                         selector: 'toh-login',
                         // template: "ds"
                         templateUrl: 'src/app/admin/admin.component.html',
-                        providers: [user_token_1.UserToken]
+                        providers: [user_token_1.UserToken, login_service_1.LoginService]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AdminComponent);
