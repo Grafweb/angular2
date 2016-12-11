@@ -108,7 +108,12 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     console.log("To jest dział err" + err);
                 };
                 LoginService.prototype.isLoggedin = function () {
-                    console.info("this.token " + this.token);
+                    //let headers = new Headers();
+                    // let options = new RequestOptions({
+                    //     body: '{"name":"Jeff"}'
+                    //     });
+                    //     let res = new Response(options);
+                    // console.info("this.token " + headers.get('x-auth'));
                 };
                 LoginService.prototype.extractData = function (res) {
                     console.info("test whether this method is reached");

@@ -100,7 +100,18 @@ export class LoginService { //extends BaseRequestOptions
     }
 
     isLoggedin() {
-        console.info("this.token " + this.token);
+        let token: string = localStorage.getItem('id_token');
+        if(token) {
+            return true;
+        } else {
+            return false;
+        }
+        //let headers = new Headers();
+        // let options = new RequestOptions({
+        //     body: '{"name":"Jeff"}'
+        //     });
+        //     let res = new Response(options);
+        // console.info("this.token " + headers.get('x-auth'));
     }
 
     private extractData(res: Response) {
