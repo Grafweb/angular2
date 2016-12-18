@@ -108,6 +108,13 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     console.log("To jest dział err" + err);
                 };
                 LoginService.prototype.isLoggedin = function () {
+                    var token = localStorage.getItem('id_token');
+                    if (token) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
                     //let headers = new Headers();
                     // let options = new RequestOptions({
                     //     body: '{"name":"Jeff"}'

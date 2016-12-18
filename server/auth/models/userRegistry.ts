@@ -10,6 +10,7 @@ interface IUser extends mongoose.Document {
   surname: string;
   email: string;
   password: string;
+  app_metadata: any;
 }
 
 
@@ -17,7 +18,10 @@ let userRegistry = new mongoose.Schema({
   username: String,
   surname: String, 
   email: String,
-  password: { type: String, select: false }
+  password: { type: String, select: false },
+  app_metadata: {
+    roles: Array
+  }
 });
 
 export let UserRegistryModel = mongoose.model<IUser>('User', userRegistry);

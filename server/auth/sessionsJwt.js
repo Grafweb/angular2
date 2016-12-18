@@ -21,6 +21,12 @@ router.use(function timeLog(req, res, next) {
 router.post('/', function (req, res, next) {
     console.info("to jest post session");
     console.log("req.body " + req.body);
+    // UserRegistryModel.findOneAndUpdate({username: req.body.username}, {app_metadata: ["guest","admin"]},
+    // (err, doc) => {
+    //     if (err) { return next(err) }
+    //     if (doc) console.info("update perform " + doc);
+    //   }
+    // );
     userRegistry_1.UserRegistryModel.findOne({ username: req.body.username })
         .select('password').select('username')
         .exec(function (err, user) {

@@ -4,7 +4,10 @@ var userRegistry = new mongoose.Schema({
     username: String,
     surname: String,
     email: String,
-    password: { type: String, select: false }
+    password: { type: String, select: false },
+    app_metadata: {
+        roles: Array
+    }
 });
 exports.UserRegistryModel = mongoose.model('User', userRegistry);
 // export function save(data) {

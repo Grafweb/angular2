@@ -11,6 +11,8 @@ router.use(function (req, res, next) {
     if (req.headers['x-auth']) {
         console.info("jestes zalogowany");
         var auth = jwt.decode(req.headers['x-auth'], config.secret);
+        console.info("wyk auth dir");
+        console.dir(auth);
     }
     console.info("wyk auth");
     next();
