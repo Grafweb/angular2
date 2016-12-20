@@ -17,5 +17,14 @@ router.use(function (req, res, next) {
     console.info("wyk auth");
     next();
 });
+router.get('/', function (req, res, next) {
+    if (!req.headers['x-auth']) {
+        console.info("niezalogowany");
+        res.redirect("/login");
+    }
+    else {
+        console.info("zalogowany");
+    }
+});
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = router;

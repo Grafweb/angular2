@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
         return res.send(401);
     }
     var auth = jwt.decode(req.headers['x-auth'], config.secret);
-    userRegistry_1.UserRegistryModel.findOne({ username: auth.username }, 'username surname email', function (err, user) {
+    userRegistry_1.UserRegistryModel.findOne({ username: auth.username }, 'username surname email app_metadata', function (err, user) {
         if (err) {
             return next(err);
         }

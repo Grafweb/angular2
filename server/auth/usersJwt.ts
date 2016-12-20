@@ -19,7 +19,7 @@ router.get('/', (req, res, next) => {
     return res.send(401);
   }
   let auth = jwt.decode(req.headers['x-auth'], config.secret)
-  UserRegistryModel.findOne({username: auth.username},'username surname email', (err, user) => {
+  UserRegistryModel.findOne({username: auth.username},'username surname email app_metadata', (err, user) => {
     if (err) { return next(err) }
     res.json(user);
   })

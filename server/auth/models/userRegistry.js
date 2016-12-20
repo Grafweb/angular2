@@ -1,6 +1,7 @@
 "use strict";
 var mongoose = require('mongoose');
 var userRegistry = new mongoose.Schema({
+    _id: { type: String, select: false },
     username: String,
     surname: String,
     email: String,

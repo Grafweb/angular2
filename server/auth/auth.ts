@@ -20,13 +20,13 @@ router.use((req, res, next) => {
 });
 
 
-// router.get('/', (req, res, next) => {
-//   if (!req.headers['x-auth']) {
-//     console.info("niezalogowany");
-//     res.redirect("/login");
-//   } else {
-//       console.info("zalogowany");
-//   }   
-// });
+router.get('/', (req, res, next) => {
+  if (!req.headers['x-auth']) {
+    console.info("niezalogowany");
+    res.redirect("/login");
+  } else {
+      console.info("zalogowany");
+  }   
+});
 
 export default router;  
