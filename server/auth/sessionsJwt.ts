@@ -30,12 +30,20 @@ router.use(function timeLog(req, res, next) {
 router.post('/', (req, res, next) => {
   console.info("to jest post session");
   console.log("req.body " + req.body);
+  // UserRegistryModel.findOneAndUpdate({username: req.body.username}, {app_metadata: {roles: ["guest","admin"], last_login: new Date()}},
+  // (err, doc) => {
+  //     if (err) { return next(err) }
+  //     if (doc) console.info("update perform " + doc);
+  //   }
+  // );
+
   // UserRegistryModel.findOneAndUpdate({username: req.body.username}, {app_metadata: ["guest","admin"]},
   // (err, doc) => {
   //     if (err) { return next(err) }
   //     if (doc) console.info("update perform " + doc);
   //   }
   // );
+
   UserRegistryModel.findOne({username: req.body.username})
     .select('password').select('username')
     .exec((err:any, user:userSch) => {

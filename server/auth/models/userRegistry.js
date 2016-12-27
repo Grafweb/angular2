@@ -7,7 +7,8 @@ var userRegistry = new mongoose.Schema({
     email: String,
     password: { type: String, select: false },
     app_metadata: {
-        roles: Array
+        roles: Array,
+        last_login: { type: Date, default: Date.now }
     }
 });
 exports.UserRegistryModel = mongoose.model('User', userRegistry);

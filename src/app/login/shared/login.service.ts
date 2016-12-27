@@ -7,6 +7,16 @@ import { Observable } from 'rxjs/Observable';
 import { HeadersRequestOptions }  from './headers-default';
 import { UserToken }  from './user-token';
 
+interface Profile {
+  username: string;
+  surname: string;
+  email: string;
+  password: string;
+  app_metadata: {
+      roles: any[]
+  };
+}
+
 @Injectable()
 
 export class LoginService { //extends BaseRequestOptions 
@@ -76,6 +86,8 @@ export class LoginService { //extends BaseRequestOptions
                      .catch(this.handleError).then(
                         tok => {
                             console.info("data2" + tok);
+                            this.saveProfile(tok);
+                            console.dir(tok);
                             return tok;
                     // var options = new BaseRequestOptions();
                     // var req = new Request(options.merge({
@@ -95,6 +107,10 @@ export class LoginService { //extends BaseRequestOptions
         if(jwt) localStorage.setItem('id_token', jwt)
     }
 
+    saveProfile(tok: Profile) {
+        if(tok) localStorage.setItem('profile', JSON.stringify(tok));
+    }
+
     logError(err: any) {
         console.log("To jest dział err" + err);
     }
@@ -106,12 +122,15 @@ export class LoginService { //extends BaseRequestOptions
         } else {
             return false;
         }
-        //let headers = new Headers();
-        // let options = new RequestOptions({
-        //     body: '{"name":"Jeff"}'
-        //     });
-        //     let res = new Response(options);
-        // console.info("this.token " + headers.get('x-auth'));
+    }
+
+    getProfile() {
+        let profile: string = localStorage.getItem('profile');        
+        if(profile) {
+           return JSON.parse(profile);
+        } else {
+            return false;
+        }
     }
 
     private extractData(res: Response) {

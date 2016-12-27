@@ -39,14 +39,21 @@ System.register(['@angular/core', '@angular/router', './login.service'], functio
                     this.router = router;
                 }
                 CanActivateTeam.prototype.canActivate = function (route, state) {
-                    this.loginService.isLoggedin();
+                    if (this.loginService.isLoggedin() && this.loginService.getProfile()) {
+                        //console.info("this.loginService.getProfile()" + this.loginService.getProfile().app_metadata.roles[0]);
+                        console.info(this.loginService.getProfile().app_metadata.roles.indexOf('admin'));
+                        //this.loginService.getProfile().app_metadata.roles[0]
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
                     //  let url: string = state.url;
                     //  let headers = new Headers();
                     // console.info("headers.get" + headers.get('x-auth'));
                     //if(this.permissions.canActivate(this.currentUser.token)) {
                     //}
                     //  let url: string = state.url;
-                    return true;
                 };
                 CanActivateTeam = __decorate([
                     core_1.Injectable(), 

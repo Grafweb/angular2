@@ -32,7 +32,14 @@ export class CanActivateTeam implements CanActivate {
     state: RouterStateSnapshot
   ): boolean {
 
-    this.loginService.isLoggedin();
+   if(this.loginService.isLoggedin() && this.loginService.getProfile().app_metadata.roles.indexOf('admin')) {
+     //console.info("this.loginService.getProfile()" + this.loginService.getProfile().app_metadata.roles[0]);
+     console.info("allow watch site");
+     //this.loginService.getProfile().app_metadata.roles[0]
+     return true;
+   } else {
+     return false;
+   }
 
   //  let url: string = state.url;
   //  let headers = new Headers();
@@ -44,6 +51,6 @@ export class CanActivateTeam implements CanActivate {
  //  let url: string = state.url;
 
 
-    return true;
+    
   }
 }

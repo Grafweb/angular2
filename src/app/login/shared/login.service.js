@@ -89,6 +89,8 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     return this.http.get(this.getLoginUrl).toPromise().then(this.extractData)
                         .catch(this.handleError).then(function (tok) {
                         console.info("data2" + tok);
+                        _this.saveProfile(tok);
+                        console.dir(tok);
                         return tok;
                         // var options = new BaseRequestOptions();
                         // var req = new Request(options.merge({
@@ -104,6 +106,10 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     if (jwt)
                         localStorage.setItem('id_token', jwt);
                 };
+                LoginService.prototype.saveProfile = function (tok) {
+                    if (tok)
+                        localStorage.setItem('profile', JSON.stringify(tok));
+                };
                 LoginService.prototype.logError = function (err) {
                     console.log("To jest dział err" + err);
                 };
@@ -115,12 +121,15 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     else {
                         return false;
                     }
-                    //let headers = new Headers();
-                    // let options = new RequestOptions({
-                    //     body: '{"name":"Jeff"}'
-                    //     });
-                    //     let res = new Response(options);
-                    // console.info("this.token " + headers.get('x-auth'));
+                };
+                LoginService.prototype.getProfile = function () {
+                    var profile = localStorage.getItem('profile');
+                    if (profile) {
+                        return JSON.parse(profile);
+                    }
+                    else {
+                        return false;
+                    }
                 };
                 LoginService.prototype.extractData = function (res) {
                     console.info("test whether this method is reached");
