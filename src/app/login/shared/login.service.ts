@@ -7,13 +7,14 @@ import { Observable } from 'rxjs/Observable';
 import { HeadersRequestOptions }  from './headers-default';
 import { UserToken }  from './user-token';
 
-interface Profile {
+export interface Profile {
   username: string;
   surname: string;
   email: string;
   password: string;
   app_metadata: {
-      roles: any[]
+      roles: any[],
+      last_login: any
   };
 }
 

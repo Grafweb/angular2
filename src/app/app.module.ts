@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
+import { HeaderAdminComponent } from './admin/header/header.component';
 import { LoginRegisterComponent } from './login/login-register.component';
 import { HeadersRequestOptions } from './login/shared/headers-default';
 import { CanActivateTeam } from './login/shared/can-active.service';
@@ -29,7 +30,8 @@ import { routing } from './app.routing';
                     HomeComponent, 
                     LoginComponent, 
                     LoginRegisterComponent, 
-                    AdminComponent
+                    AdminComponent,
+                    HeaderAdminComponent
                      ],
     providers: [ {provide: RequestOptions, useClass: HeadersRequestOptions }, 
                 UserToken,

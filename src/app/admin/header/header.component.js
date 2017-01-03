@@ -1,4 +1,4 @@
-System.register(['@angular/core', './../login/shared/login.service'], function(exports_1, context_1) {
+System.register(['@angular/core', './../../login/shared/login.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -11,7 +11,7 @@ System.register(['@angular/core', './../login/shared/login.service'], function(e
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, login_service_1;
-    var AdminComponent;
+    var HeaderAdminComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -21,21 +21,28 @@ System.register(['@angular/core', './../login/shared/login.service'], function(e
                 login_service_1 = login_service_1_1;
             }],
         execute: function() {
-            AdminComponent = (function () {
-                function AdminComponent() {
+            HeaderAdminComponent = (function () {
+                function HeaderAdminComponent(LoginService) {
+                    this.LoginService = LoginService;
+                    this.profile = this.LoginService.getProfile();
                 }
-                AdminComponent = __decorate([
+                HeaderAdminComponent.prototype.getProfile = function () {
+                    return this.profile = this.LoginService.getProfile();
+                };
+                HeaderAdminComponent.prototype.ngOnInit = function () {
+                    console.info("ngOnInit()");
+                };
+                HeaderAdminComponent = __decorate([
                     core_1.Component({
-                        selector: 'toh-login',
-                        // template: "ds"
-                        templateUrl: 'src/app/admin/admin.component.html',
-                        providers: [login_service_1.LoginService]
+                        selector: 'header-admin',
+                        templateUrl: 'src/app/admin/header/header.component.html',
+                        providers: []
                     }), 
-                    __metadata('design:paramtypes', [])
-                ], AdminComponent);
-                return AdminComponent;
+                    __metadata('design:paramtypes', [login_service_1.LoginService])
+                ], HeaderAdminComponent);
+                return HeaderAdminComponent;
             }());
-            exports_1("AdminComponent", AdminComponent);
+            exports_1("HeaderAdminComponent", HeaderAdminComponent);
         }
     }
 });

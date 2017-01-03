@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+import { HeaderAdminComponent } from './header/header.component';
 import { LoginService }  from './../login/shared/login.service';
 
 @Component({

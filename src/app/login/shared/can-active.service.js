@@ -39,9 +39,9 @@ System.register(['@angular/core', '@angular/router', './login.service'], functio
                     this.router = router;
                 }
                 CanActivateTeam.prototype.canActivate = function (route, state) {
-                    if (this.loginService.isLoggedin() && this.loginService.getProfile()) {
+                    if (this.loginService.isLoggedin() && this.loginService.getProfile().app_metadata.roles.indexOf('admin')) {
                         //console.info("this.loginService.getProfile()" + this.loginService.getProfile().app_metadata.roles[0]);
-                        console.info(this.loginService.getProfile().app_metadata.roles.indexOf('admin'));
+                        console.info("allow watch site");
                         //this.loginService.getProfile().app_metadata.roles[0]
                         return true;
                     }
