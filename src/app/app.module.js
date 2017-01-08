@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', '@angular/http', './app.component', './home/home.component', './login/login.component', './admin/admin.component', './admin/header/header.component', './login/login-register.component', './login/shared/headers-default', './login/shared/can-active.service', './login/shared/user-token', './login/shared/login.service', './app.routing'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', '@angular/http', './app.component', './home/home.component', './login/login.component', './admin/admin.component', './admin/page/page-add.component', './admin/header/header.component', './login/login-register.component', './login/shared/headers-default', './login/shared/can-active.service', './login/shared/user-token', './login/shared/login.service', './app.routing'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, forms_1, http_1, app_component_1, home_component_1, login_component_1, admin_component_1, header_component_1, login_register_component_1, headers_default_1, can_active_service_1, user_token_1, login_service_1, app_routing_1;
+    var core_1, platform_browser_1, forms_1, http_1, app_component_1, home_component_1, login_component_1, admin_component_1, page_add_component_1, header_component_1, login_register_component_1, headers_default_1, can_active_service_1, user_token_1, login_service_1, app_routing_1;
     var AppModule;
     return {
         setters:[
@@ -37,6 +37,9 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
             },
             function (admin_component_1_1) {
                 admin_component_1 = admin_component_1_1;
+            },
+            function (page_add_component_1_1) {
+                page_add_component_1 = page_add_component_1_1;
             },
             function (header_component_1_1) {
                 header_component_1 = header_component_1_1;
@@ -76,7 +79,8 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
                             login_component_1.LoginComponent,
                             login_register_component_1.LoginRegisterComponent,
                             admin_component_1.AdminComponent,
-                            header_component_1.HeaderAdminComponent
+                            header_component_1.HeaderAdminComponent,
+                            page_add_component_1.PageAddAdminComponent
                         ],
                         providers: [{ provide: http_1.RequestOptions, useClass: headers_default_1.HeadersRequestOptions },
                             user_token_1.UserToken,

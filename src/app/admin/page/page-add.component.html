@@ -1,0 +1,5 @@
+<form #formSite="ngForm" (ngSubmit)="onSubmit(formSite)" novalidate>
+    <input name="first" ngModel required #first="ngModel">
+    <input name="last" ngModel>
+    <button>Submit</button>
+</form>

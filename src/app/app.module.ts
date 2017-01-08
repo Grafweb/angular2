@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
+import { PageAddAdminComponent } from './admin/page/page-add.component';
 import { HeaderAdminComponent } from './admin/header/header.component';
 import { LoginRegisterComponent } from './login/login-register.component';
 import { HeadersRequestOptions } from './login/shared/headers-default';
@@ -31,7 +32,8 @@ import { routing } from './app.routing';
                     LoginComponent, 
                     LoginRegisterComponent, 
                     AdminComponent,
-                    HeaderAdminComponent
+                    HeaderAdminComponent,
+                    PageAddAdminComponent
                      ],
     providers: [ {provide: RequestOptions, useClass: HeadersRequestOptions }, 
                 UserToken,

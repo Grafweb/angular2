@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
+import { PageAddAdminComponent } from './admin/page/page-add.component';
 import { LoginRegisterComponent } from './login/login-register.component';
 import { CanActivateTeam } from './login/shared/can-active.service';
 
@@ -25,6 +26,11 @@ const appRoutes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [CanActivateTeam]
+  },
+  {
+    path: 'admin/page/add-page',
+    component: PageAddAdminComponent,
     canActivate: [CanActivateTeam]
   }
 ];
