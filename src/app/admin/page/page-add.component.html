@@ -1,5 +1,8 @@
 <form #formSite="ngForm" (ngSubmit)="onSubmit(formSite)" novalidate>
-    <input name="first" ngModel required #first="ngModel">
-    <input name="last" ngModel>
-    <button>Submit</button>
+    <input name="title_meta" [(ngModel)]="site.title_meta" required>
+    <input name="description_meta" [(ngModel)]="site.description_meta" required>
+    <input name="keywords_meta" [(ngModel)]="site.keywords_meta" required>
+    <input name="title" [(ngModel)]="site.title" required>
+    <textarea name="content" [(ngModel)]="site.content" required ></textarea>
+    <button type="submit">Zapisz</button>
 </form>

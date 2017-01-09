@@ -9,6 +9,8 @@ import { NgForm } from '@angular/forms';
 })
 export class PageAddAdminComponent implements OnInit {
 
+    site:any; 
+    
     constructor() {
     }
 
