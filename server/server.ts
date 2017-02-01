@@ -8,6 +8,7 @@ import { UserRegistryModel } from './auth/models/userRegistry';
 import sessionsJwt from './auth/sessionsJwt';
 import usersJwt from './auth/usersJwt';
 import auth from './auth/auth';
+import pageAdd from './page/pageRoute';
 
 let port: number = process.env.PORT || 3000;
 let app = express();
@@ -20,7 +21,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/logins', sessionsJwt);
 app.use('/user', usersJwt);
 app.use('/admin',auth);
-app.use('/admin/*',auth); 
+app.use('/admin/*',auth);
+app.use('/admin/page', pageAdd); 
 //app.use('/libs', express.static(path.resolve(__dirname + '/../src/libs')));
 
 

@@ -1,4 +1,4 @@
-System.register(['@angular/core'], function(exports_1, context_1) {
+System.register(['@angular/core', './shared/page.interface', './shared/page.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,22 +10,38 @@ System.register(['@angular/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, page_interface_1, page_service_1;
     var PageAddAdminComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (page_interface_1_1) {
+                page_interface_1 = page_interface_1_1;
+            },
+            function (page_service_1_1) {
+                page_service_1 = page_service_1_1;
             }],
         execute: function() {
             //import { Profile, LoginService }  from './../../login/shared/login.service';
             PageAddAdminComponent = (function () {
-                function PageAddAdminComponent() {
+                function PageAddAdminComponent(pageService) {
+                    this.pageService = pageService;
+                    // site:Page = {
+                    //     title_meta: "",
+                    //     description_meta: "",
+                    //     keywords_meta: "",
+                    //     title: "",
+                    //     content: ""
+                    // }
+                    this.site = new page_interface_1.PageData();
                 }
                 PageAddAdminComponent.prototype.onSubmit = function (formSite) {
                     console.dir(formSite);
                     console.log("formSite.value " + formSite.value); // { first: '', last: '' }
                     console.log("formSite.value " + formSite.valid); // false
+                    this.pageService.sendPage(formSite.value);
                 };
                 PageAddAdminComponent.prototype.ngOnInit = function () {
                     console.info("ngOnInit()");
@@ -34,9 +50,9 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                     core_1.Component({
                         selector: 'page-add-admin',
                         templateUrl: 'src/app/admin/page/page-add.component.html',
-                        providers: []
+                        providers: [page_service_1.PageService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [page_service_1.PageService])
                 ], PageAddAdminComponent);
                 return PageAddAdminComponent;
             }());

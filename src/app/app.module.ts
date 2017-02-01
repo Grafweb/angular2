@@ -16,7 +16,9 @@ import { HeadersRequestOptions } from './login/shared/headers-default';
 import { CanActivateTeam } from './login/shared/can-active.service';
 import { UserToken }  from './login/shared/user-token';
 import { LoginService }  from './login/shared/login.service';
-// import { LoginComponent } from './login/login.component';
+import { LogsService }  from './admin/shared/log.service';
+import { PageService }  from './admin/page/shared/page.service';
+// import { LoginComponent } from './login/login.component'; 
 import { routing } from './app.routing';
 
 //http://blog.angular-university.io/angular2-ngmodule/
@@ -38,7 +40,9 @@ import { routing } from './app.routing';
     providers: [ {provide: RequestOptions, useClass: HeadersRequestOptions }, 
                 UserToken,
                 LoginService,
-                CanActivateTeam
+                CanActivateTeam,
+                LogsService,
+                PageService
                 ],     
     bootstrap:    [ AppComponent ]
 })

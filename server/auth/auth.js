@@ -4,6 +4,10 @@ var jwt = require('jwt-simple');
 var config = require('./config/keyJwt');
 var router = app.Router();
 router.use(function (req, res, next) {
+    console.info("wyk auth");
+    next();
+});
+router.get('/', function (req, res, next) {
     if (!req.headers['x-auth']) {
         //return res.send(401);
         res.redirect("/login");
@@ -13,17 +17,6 @@ router.use(function (req, res, next) {
         var auth = jwt.decode(req.headers['x-auth'], config.secret);
         console.info("wyk auth dir");
         console.dir(auth);
-    }
-    console.info("wyk auth");
-    next();
-});
-router.get('/', function (req, res, next) {
-    if (!req.headers['x-auth']) {
-        console.info("niezalogowany");
-        res.redirect("/login");
-    }
-    else {
-        console.info("zalogowany");
     }
 });
 Object.defineProperty(exports, "__esModule", { value: true });

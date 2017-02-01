@@ -21,7 +21,7 @@ import { Injectable, Inject }  from '@angular/core';
 @Injectable()
 export class HeadersRequestOptions extends BaseRequestOptions {
     
-    //method: RequestMethod.Get;
+    method: RequestMethod.Get;
 
     static auth:string = "asasas";
      
