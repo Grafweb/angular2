@@ -44,10 +44,18 @@ System.register(['@angular/http', '@angular/core'], function(exports_1, context_
                 __extends(HeadersRequestOptions, _super);
                 function HeadersRequestOptions() {
                     _super.apply(this, arguments);
-                    this.headers = new http_1.Headers({ 'x-auth': localStorage.getItem('id_token') });
+                    this.headers = new http_1.Headers({ 'x-auth': HeadersRequestOptions.auth });
                     this.body = "Angular";
                     this.search = new http_1.URLSearchParams("coreTeam=true");
                 }
+                // addHeader(headerName: string, headerValue: string ){
+                //                 (this.requestOptionArgs.headers as Headers).set(headerName, headerValue);
+                //             }
+                HeadersRequestOptions.prototype.merge = function (options) {
+                    options.headers = new http_1.Headers({ 'x-auth': HeadersRequestOptions.auth });
+                    console.info("wykonałdem merge");
+                    return _super.prototype.merge.call(this, options);
+                };
                 HeadersRequestOptions.auth = "asasas";
                 HeadersRequestOptions = __decorate([
                     core_1.Injectable(), 

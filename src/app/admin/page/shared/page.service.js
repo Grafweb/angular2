@@ -40,7 +40,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     console.dir(data);
                     var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
                     var options = new http_1.RequestOptions({ headers: headers });
-                    return this.http.post(this.urlPage, JSON.stringify(data)).map(this.extractData)
+                    return this.http.post(this.urlPage, JSON.stringify(data), { headers: headers }).map(this.extractData)
                         .subscribe(function (data) {
                         console.info("data" + data);
                         //console.dir(tok);

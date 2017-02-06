@@ -13,17 +13,15 @@ gulp.task('bower', function() {
  
 
 gulp.task('buildClient', function () {
-	var tsProject = ts.createProject('./tsconfig.json');
 	var tsResult =  gulp.src(['./typings/main.d.ts','./src/**/*.ts'])
-		.pipe(ts(tsProject));
+		.pipe(ts('./tsconfig.json'));
 		
 		return tsResult.js.pipe(gulp.dest('./src'));
 });
  
 gulp.task('buildServer', function () {
-	var tsProject = ts.createProject('./server/tsconfig.json');
 	var tsResult =  gulp.src(['./server/**/*.ts'])
-		.pipe(ts(tsProject));
+		.pipe(ts('./server/tsconfig.json'));
 		
 		return tsResult.js.pipe(gulp.dest('./server'));
 });

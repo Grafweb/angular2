@@ -23,7 +23,7 @@ export class PageService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.urlPage, JSON.stringify(data)).map(this.extractData)
+        return this.http.post(this.urlPage, JSON.stringify(data),{ headers: headers }).map(this.extractData)
                .subscribe(
                 data => {
                     console.info("data" + data);
