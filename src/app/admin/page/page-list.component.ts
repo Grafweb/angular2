@@ -6,7 +6,7 @@ import { PageService }  from './shared/page.service';
 
 @Component({
     selector: 'page-add-admin',
-    templateUrl: 'src/app/admin/page/page-add.component.html',
+    templateUrl: 'src/app/admin/page/page-list.component.html',
     providers: [PageService]
 })
 export class PageAddAdminComponent implements OnInit {
