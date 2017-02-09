@@ -9,22 +9,10 @@ import { PageService }  from './shared/page.service';
     templateUrl: 'src/app/admin/page/page-list.component.html',
     providers: [PageService]
 })
-export class PageAddAdminComponent implements OnInit {
+export class PageListAdminComponent {
 
     site:Page = new PageData(); 
     
     constructor(private pageService: PageService) { }
-
-    onSubmit(formSite: NgForm) {
-        console.dir(formSite);
-        console.log("formSite.value " + formSite.value);  // { first: '', last: '' }
-        console.log("formSite.value " + formSite.valid);  // false
-
-        this.pageService.sendPage(formSite.value);
-    }
-
-    ngOnInit(): void {
-        console.info("ngOnInit()");
-    }
 
 }

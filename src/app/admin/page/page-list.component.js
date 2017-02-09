@@ -11,7 +11,7 @@ System.register(['@angular/core', './shared/page.interface', './shared/page.serv
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, page_interface_1, page_service_1;
-    var PageAddAdminComponent;
+    var PageListAdminComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -25,31 +25,22 @@ System.register(['@angular/core', './shared/page.interface', './shared/page.serv
             }],
         execute: function() {
             //import { Profile, LoginService }  from './../../login/shared/login.service';
-            PageAddAdminComponent = (function () {
-                function PageAddAdminComponent(pageService) {
+            PageListAdminComponent = (function () {
+                function PageListAdminComponent(pageService) {
                     this.pageService = pageService;
                     this.site = new page_interface_1.PageData();
                 }
-                PageAddAdminComponent.prototype.onSubmit = function (formSite) {
-                    console.dir(formSite);
-                    console.log("formSite.value " + formSite.value); // { first: '', last: '' }
-                    console.log("formSite.value " + formSite.valid); // false
-                    this.pageService.sendPage(formSite.value);
-                };
-                PageAddAdminComponent.prototype.ngOnInit = function () {
-                    console.info("ngOnInit()");
-                };
-                PageAddAdminComponent = __decorate([
+                PageListAdminComponent = __decorate([
                     core_1.Component({
                         selector: 'page-add-admin',
-                        templateUrl: 'src/app/admin/page/page-add.component.html',
+                        templateUrl: 'src/app/admin/page/page-list.component.html',
                         providers: [page_service_1.PageService]
                     }), 
                     __metadata('design:paramtypes', [page_service_1.PageService])
-                ], PageAddAdminComponent);
-                return PageAddAdminComponent;
+                ], PageListAdminComponent);
+                return PageListAdminComponent;
             }());
-            exports_1("PageAddAdminComponent", PageAddAdminComponent);
+            exports_1("PageListAdminComponent", PageListAdminComponent);
         }
     }
 });

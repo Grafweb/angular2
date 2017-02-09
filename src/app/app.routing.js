@@ -49,6 +49,11 @@ System.register(['@angular/router', './home/home.component', './login/login.comp
                     path: 'admin/page/add-page',
                     component: page_add_component_1.PageAddAdminComponent,
                     canActivate: [can_active_service_1.CanActivateTeam]
+                },
+                {
+                    path: 'admin/page/list-page',
+                    component: page_add_component_1.PageAddAdminComponent,
+                    canActivate: [can_active_service_1.CanActivateTeam]
                 }
             ];
             exports_1("routing", routing = router_1.RouterModule.forRoot(appRoutes));
