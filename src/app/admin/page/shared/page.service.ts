@@ -17,6 +17,21 @@ export class PageService {
        //super();
     }
 
+    getListPages() {
+        console.info("wykonałem getAllPages" + this.urlPage);
+        
+        return this.http.get(this.urlPage).map(this.extractData)
+               .subscribe(
+                data => {
+                    console.info("data" + data);
+                    //console.dir(tok);
+                    //this.getUser();
+                    //return data;                    
+                },
+                err => this.logsService.logError(err)
+            );
+    }    
+
     sendPage(data) {
         console.info("wykonałem send node ssa" + this.urlPage);
         console.dir(data);

@@ -1,4 +1,4 @@
-System.register(['@angular/core', './shared/page.interface', './shared/page.service'], function(exports_1, context_1) {
+System.register(['@angular/core', './shared/page.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,12 @@ System.register(['@angular/core', './shared/page.interface', './shared/page.serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, page_interface_1, page_service_1;
+    var core_1, page_service_1;
     var PageListAdminComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (page_interface_1_1) {
-                page_interface_1 = page_interface_1_1;
             },
             function (page_service_1_1) {
                 page_service_1 = page_service_1_1;
@@ -28,8 +25,14 @@ System.register(['@angular/core', './shared/page.interface', './shared/page.serv
             PageListAdminComponent = (function () {
                 function PageListAdminComponent(pageService) {
                     this.pageService = pageService;
-                    this.site = new page_interface_1.PageData();
                 }
+                PageListAdminComponent.prototype.getAllPage = function () {
+                    console.info("wykonałem getAllPage");
+                    this.allPage = this.pageService.getListPages();
+                };
+                PageListAdminComponent.prototype.ngOnInit = function () {
+                    this.getAllPage();
+                };
                 PageListAdminComponent = __decorate([
                     core_1.Component({
                         selector: 'page-add-admin',

@@ -1,7 +1,7 @@
-System.register(['@angular/router', './home/home.component', './login/login.component', './admin/admin.component', './admin/page/page-add.component', './login/login-register.component', './login/shared/can-active.service'], function(exports_1, context_1) {
+System.register(['@angular/router', './home/home.component', './login/login.component', './admin/admin.component', './admin/page/page-add.component', './admin/page/page-list.component', './login/login-register.component', './login/shared/can-active.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, home_component_1, login_component_1, admin_component_1, page_add_component_1, login_register_component_1, can_active_service_1;
+    var router_1, home_component_1, login_component_1, admin_component_1, page_add_component_1, page_list_component_1, login_register_component_1, can_active_service_1;
     var appRoutes, routing;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['@angular/router', './home/home.component', './login/login.comp
             },
             function (page_add_component_1_1) {
                 page_add_component_1 = page_add_component_1_1;
+            },
+            function (page_list_component_1_1) {
+                page_list_component_1 = page_list_component_1_1;
             },
             function (login_register_component_1_1) {
                 login_register_component_1 = login_register_component_1_1;
@@ -52,7 +55,7 @@ System.register(['@angular/router', './home/home.component', './login/login.comp
                 },
                 {
                     path: 'admin/page/list-page',
-                    component: page_add_component_1.PageAddAdminComponent,
+                    component: page_list_component_1.PageListAdminComponent,
                     canActivate: [can_active_service_1.CanActivateTeam]
                 }
             ];

@@ -9,9 +9,20 @@ import { PageService }  from './shared/page.service';
     templateUrl: 'src/app/admin/page/page-list.component.html',
     providers: [PageService]
 })
-export class PageListAdminComponent {
+export class PageListAdminComponent implements OnInit  {
 
-    site:Page = new PageData(); 
+    //site:Page = new PageData();
+
+    allPage;
+
+    getAllPage():void {
+        console.info("wykonałem getAllPage");
+        this.allPage =  this.pageService.getListPages();
+    }
+
+    ngOnInit(): void {
+        this.getAllPage();
+    }
     
     constructor(private pageService: PageService) { }
 

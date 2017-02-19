@@ -36,7 +36,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'admin/page/list-page',
-    component: PageAddAdminComponent,
+    component: PageListAdminComponent,
     canActivate: [CanActivateTeam]
   }
 ];

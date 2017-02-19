@@ -1,6 +1,6 @@
 import mongoose = require('mongoose');
 
-interface IUser extends mongoose.Document {
+interface Pages extends mongoose.Document {
   title_meta: string;
   description_meta: string;
   keywords_meta: string;
@@ -17,6 +17,6 @@ let pageSchema = new mongoose.Schema({
     content: String 
 });
 
-export let PageModel = mongoose.model< IUser >('PageModel', pageSchema);
+export let PageModel = mongoose.model< Pages >('PageModel', pageSchema);
 
 
