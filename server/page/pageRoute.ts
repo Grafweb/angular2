@@ -4,8 +4,10 @@ import { PageModel } from './models/pages';
 
 let router = app.Router();
 
-router.use(function timeLog(req, res, next) {
-  next();
+router.use((req, res, next) => {
+    
+    console.info("wyk PAGE");
+    next();
 });
 
 router.post('/', (req, res, next) => {
@@ -24,9 +26,10 @@ router.get('/', (req, res, next) => {
   console.info("to jest page/admin express");
   console.log("req.body " + req.body);
   console.dir(req.body);
-
+  res.send("to jest site");
   PageModel.find({}).exec((err:string, data) => {
     console.info("data" + data);
+    res.json(data);
   });
   
 });

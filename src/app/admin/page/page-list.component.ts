@@ -21,7 +21,7 @@ export class PageListAdminComponent implements OnInit  {
     }
 
     ngOnInit(): void {
-        this.getAllPage();
+        //this.getAllPage();
     }
     
     constructor(private pageService: PageService) { }

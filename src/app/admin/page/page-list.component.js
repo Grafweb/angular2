@@ -31,7 +31,7 @@ System.register(['@angular/core', './shared/page.service'], function(exports_1, 
                     this.allPage = this.pageService.getListPages();
                 };
                 PageListAdminComponent.prototype.ngOnInit = function () {
-                    this.getAllPage();
+                    //this.getAllPage();
                 };
                 PageListAdminComponent = __decorate([
                     core_1.Component({

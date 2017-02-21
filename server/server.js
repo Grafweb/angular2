@@ -17,7 +17,7 @@ app.use('/logins', sessionsJwt_1.default);
 app.use('/user', usersJwt_1.default);
 app.use('/admin', auth_1.default);
 app.use('/admin/*', auth_1.default);
-app.use('/admin/page', pageRoute_1.default);
+app.use('/ds/page', pageRoute_1.default);
 //app.use('/libs', express.static(path.resolve(__dirname + '/../src/libs')));
 console.info("path.resolve(__dirname + 'libs') %s - %s", path.resolve(__dirname + '/../src/libs'), __dirname);
 mongooseConnect.mongoConnect();

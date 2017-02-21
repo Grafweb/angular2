@@ -3,7 +3,8 @@ var app = require('express');
 var handleError = require('../shared/error');
 var pages_1 = require('./models/pages');
 var router = app.Router();
-router.use(function timeLog(req, res, next) {
+router.use(function (req, res, next) {
+    console.info("wyk PAGE");
     next();
 });
 router.post('/', function (req, res, next) {
@@ -20,8 +21,10 @@ router.get('/', function (req, res, next) {
     console.info("to jest page/admin express");
     console.log("req.body " + req.body);
     console.dir(req.body);
+    res.send("to jest site");
     pages_1.PageModel.find({}).exec(function (err, data) {
         console.info("data" + data);
+        res.json(data);
     });
 });
 Object.defineProperty(exports, "__esModule", { value: true });

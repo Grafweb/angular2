@@ -22,7 +22,7 @@ app.use('/logins', sessionsJwt);
 app.use('/user', usersJwt);
 app.use('/admin',auth);
 app.use('/admin/*',auth);
-app.use('/admin/page', page); 
+app.use('/ds/page', page); 
 //app.use('/libs', express.static(path.resolve(__dirname + '/../src/libs')));
 
 

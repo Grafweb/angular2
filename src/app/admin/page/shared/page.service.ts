@@ -11,7 +11,7 @@ import { LogsService }  from './../../shared/log.service';
 @Injectable()
 export class PageService {
 
-    urlPage:string = "/admin/page";
+    urlPage:string = "/ds/page";
 
     constructor(private http: Http, private logsService: LogsService) {
        //super();
