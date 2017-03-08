@@ -7,4 +7,4 @@ var pageSchema = new mongoose.Schema({
     title: String,
     content: String
 });
-exports.PageModel = mongoose.model('PageModel', pageSchema);
+exports.PageModel = mongoose.model('page', pageSchema);

@@ -26,8 +26,8 @@ router.get('/', (req, res, next) => {
   console.info("to jest page/admin express");
   console.log("req.body " + req.body);
   console.dir(req.body);
-  res.send("to jest site");
-  PageModel.find({}).exec((err:string, data) => {
+  //res.send("to jest site");
+  PageModel.find({}, (err:string, data) => {
     console.info("data" + data);
     res.json(data);
   });

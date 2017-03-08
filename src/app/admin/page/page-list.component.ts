@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Page, PageData }  from './shared/page.interface';
 import { PageService }  from './shared/page.service';
+import { Observable } from 'rxjs/Observable';
 //import { Profile, LoginService }  from './../../login/shared/login.service';
+
 
 @Component({
     selector: 'page-add-admin',
@@ -21,7 +23,7 @@ export class PageListAdminComponent implements OnInit  {
     }
 
     ngOnInit(): void {
-        //this.getAllPage();
+        this.getAllPage();
     }
     
     constructor(private pageService: PageService) { }

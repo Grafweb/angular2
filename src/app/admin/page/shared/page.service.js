@@ -31,7 +31,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                 function PageService(http, logsService) {
                     this.http = http;
                     this.logsService = logsService;
-                    this.urlPage = "/ds/page";
+                    this.urlPage = "/admin/page";
                     //super();
                 }
                 PageService.prototype.getListPages = function () {

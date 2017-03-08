@@ -5,29 +5,25 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 import { LogsService }  from './../../shared/log.service';
-
+import { Page }  from './page.interface';
 
 
 @Injectable()
 export class PageService {
 
-    urlPage:string = "/ds/page";
+    private urlPage:string = "/admin/page";
+    
+    dataPage: Array<Page>;
 
     constructor(private http: Http, private logsService: LogsService) {
        //super();
     }
 
-    getListPages() {
+    getListPages():Observable<Page> {
         console.info("wykonałem getAllPages" + this.urlPage);
         
         return this.http.get(this.urlPage).map(this.extractData)
-               .subscribe(
-                data => {
-                    console.info("data" + data);
-                    //console.dir(tok);
-                    //this.getUser();
-                    //return data;                    
-                },
+               .subscribe( data:Page => this.dataPage.push(data),
                 err => this.logsService.logError(err)
             );
     }    

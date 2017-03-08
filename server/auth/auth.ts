@@ -21,6 +21,7 @@ router.get('/', (req, res, next) => {
         let auth = jwt.decode(req.headers['x-auth'], config.secret)
         console.info("wyk auth dir");
         console.dir(auth);
+        next();
     }   
 });
 

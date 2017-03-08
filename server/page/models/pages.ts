@@ -17,6 +17,6 @@ let pageSchema = new mongoose.Schema({
     content: String 
 });
 
-export let PageModel = mongoose.model< Pages >('PageModel', pageSchema);
+export let PageModel = mongoose.model< Pages >('page', pageSchema);
 
 
