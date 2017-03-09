@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Page, PageData }  from './shared/page.interface';
 import { PageService }  from './shared/page.service';
 import { Observable } from 'rxjs/Observable';
+import { LogsService }  from './../shared/log.service';
 //import { Profile, LoginService }  from './../../login/shared/login.service';
 
 
@@ -15,17 +16,24 @@ export class PageListAdminComponent implements OnInit  {
 
     //site:Page = new PageData();
 
-    allPage;
+    allPage: Page[];
 
-    getAllPage():void {
+    getAllPage() {
         console.info("wykonałem getAllPage");
-        this.allPage =  this.pageService.getListPages();
+        return this.pageService.getListPages()
+        .subscribe( data => {
+            this.allPage = data;
+            console.info("data" + data);
+            console.dir(data);
+            },
+                err => this.logsService.logError(err)
+            );
     }
 
     ngOnInit(): void {
         this.getAllPage();
     }
     
-    constructor(private pageService: PageService) { }
+    constructor(private pageService: PageService, private logsService: LogsService) { }
 
 }

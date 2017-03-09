@@ -19,13 +19,10 @@ export class PageService {
        //super();
     }
 
-    getListPages():Observable<Page> {
+    getListPages() {
         console.info("wykonałem getAllPages" + this.urlPage);
         
-        return this.http.get(this.urlPage).map(this.extractData)
-               .subscribe( data:Page => this.dataPage.push(data),
-                err => this.logsService.logError(err)
-            );
+        return this.http.get(this.urlPage).map(this.extractData);
     }    
 
     sendPage(data) {

@@ -35,15 +35,8 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     //super();
                 }
                 PageService.prototype.getListPages = function () {
-                    var _this = this;
                     console.info("wykonałem getAllPages" + this.urlPage);
-                    return this.http.get(this.urlPage).map(this.extractData)
-                        .subscribe(function (data) {
-                        console.info("data" + data);
-                        //console.dir(tok);
-                        //this.getUser();
-                        //return data;                    
-                    }, function (err) { return _this.logsService.logError(err); });
+                    return this.http.get(this.urlPage).map(this.extractData);
                 };
                 PageService.prototype.sendPage = function (data) {
                     var _this = this;

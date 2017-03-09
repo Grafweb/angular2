@@ -1,4 +1,4 @@
-System.register(['@angular/core', './shared/page.service'], function(exports_1, context_1) {
+System.register(['@angular/core', './shared/page.service', './../shared/log.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', './shared/page.service'], function(exports_1, 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, page_service_1;
+    var core_1, page_service_1, log_service_1;
     var PageListAdminComponent;
     return {
         setters:[
@@ -19,19 +19,29 @@ System.register(['@angular/core', './shared/page.service'], function(exports_1, 
             },
             function (page_service_1_1) {
                 page_service_1 = page_service_1_1;
+            },
+            function (log_service_1_1) {
+                log_service_1 = log_service_1_1;
             }],
         execute: function() {
             //import { Profile, LoginService }  from './../../login/shared/login.service';
             PageListAdminComponent = (function () {
-                function PageListAdminComponent(pageService) {
+                function PageListAdminComponent(pageService, logsService) {
                     this.pageService = pageService;
+                    this.logsService = logsService;
                 }
                 PageListAdminComponent.prototype.getAllPage = function () {
+                    var _this = this;
                     console.info("wykonałem getAllPage");
-                    this.allPage = this.pageService.getListPages();
+                    return this.pageService.getListPages()
+                        .subscribe(function (data) {
+                        //this.allPage.push(data)
+                        console.info("data" + data);
+                        console.dir(data);
+                    }, function (err) { return _this.logsService.logError(err); });
                 };
                 PageListAdminComponent.prototype.ngOnInit = function () {
-                    //this.getAllPage();
+                    this.getAllPage();
                 };
                 PageListAdminComponent = __decorate([
                     core_1.Component({
@@ -39,7 +49,7 @@ System.register(['@angular/core', './shared/page.service'], function(exports_1, 
                         templateUrl: 'src/app/admin/page/page-list.component.html',
                         providers: [page_service_1.PageService]
                     }), 
-                    __metadata('design:paramtypes', [page_service_1.PageService])
+                    __metadata('design:paramtypes', [page_service_1.PageService, log_service_1.LogsService])
                 ], PageListAdminComponent);
                 return PageListAdminComponent;
             }());
