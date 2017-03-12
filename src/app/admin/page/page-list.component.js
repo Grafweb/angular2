@@ -35,7 +35,7 @@ System.register(['@angular/core', './shared/page.service', './../shared/log.serv
                     console.info("wykonałem getAllPage");
                     return this.pageService.getListPages()
                         .subscribe(function (data) {
-                        //this.allPage.push(data)
+                        _this.allPage = data;
                         console.info("data" + data);
                         console.dir(data);
                     }, function (err) { return _this.logsService.logError(err); });

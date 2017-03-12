@@ -16,7 +16,7 @@ export class PageListAdminComponent implements OnInit  {
 
     //site:Page = new PageData();
 
-    allPage: Page[];
+    allPage: Array<Page>;
 
     getAllPage() {
         console.info("wykonałem getAllPage");
