@@ -1,4 +1,4 @@
-System.register(['@angular/core', './shared/page.interface', './shared/page.service'], function(exports_1, context_1) {
+System.register(['@angular/core', './shared/page.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,12 @@ System.register(['@angular/core', './shared/page.interface', './shared/page.serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, page_interface_1, page_service_1;
+    var core_1, page_service_1;
     var PageAddAdminComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (page_interface_1_1) {
-                page_interface_1 = page_interface_1_1;
             },
             function (page_service_1_1) {
                 page_service_1 = page_service_1_1;
@@ -28,13 +25,13 @@ System.register(['@angular/core', './shared/page.interface', './shared/page.serv
             PageAddAdminComponent = (function () {
                 function PageAddAdminComponent(pageService) {
                     this.pageService = pageService;
-                    this.site = new page_interface_1.PageData();
+                    this.site = {};
                 }
                 PageAddAdminComponent.prototype.onSubmit = function (formSite) {
                     console.dir(formSite);
                     console.log("formSite.value " + formSite.value); // { first: '', last: '' }
                     console.log("formSite.value " + formSite.valid); // false
-                    this.pageService.sendPage(formSite.value);
+                    //this.pageService.sendPage(formSite.value);
                 };
                 PageAddAdminComponent.prototype.ngOnInit = function () {
                     console.info("ngOnInit()");

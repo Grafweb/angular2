@@ -9,7 +9,7 @@ export interface Page {
   content: string;
 }
 
-interface Pages extends Page, mongoose.Document {
+export interface Pages extends Page, mongoose.Document {
 }
 
 

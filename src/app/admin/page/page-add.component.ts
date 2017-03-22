@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Page, PageData }  from './shared/page.interface';
+import { Page }  from './../../../../src/app/admin/page/shared/page.interface';
 import { PageService }  from './shared/page.service';
 //import { Profile, LoginService }  from './../../login/shared/login.service';
 
@@ -11,7 +11,7 @@ import { PageService }  from './shared/page.service';
 })
 export class PageAddAdminComponent implements OnInit {
 
-    site:Page = new PageData(); 
+    site:Page = <Page>{}; 
     
     constructor(private pageService: PageService) { }
 
@@ -20,7 +20,7 @@ export class PageAddAdminComponent implements OnInit {
         console.log("formSite.value " + formSite.value);  // { first: '', last: '' }
         console.log("formSite.value " + formSite.valid);  // false
 
-        this.pageService.sendPage(formSite.value);
+        //this.pageService.sendPage(formSite.value);
     }
 
     ngOnInit(): void {

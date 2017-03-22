@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Page, PageData }  from './shared/page.interface';
+//import { Page, PageData }  from './shared/page.interface';
+import { Page }  from './../../../../src/app/admin/page/shared/page.interface';
 import { PageService }  from './shared/page.service';
 import { Observable } from 'rxjs/Observable';
 import { LogsService }  from './../shared/log.service';
