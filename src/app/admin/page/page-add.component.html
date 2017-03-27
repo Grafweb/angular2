@@ -5,6 +5,6 @@
     <input name="title" [(ngModel)]="site.title" required>
     <input name="keywords_meta" [(ngModel)]="site.keywords_meta" required>
     <textarea name="content" [(ngModel)]="site.content" required ></textarea>
-    <input ngModel type="file" name="foto" required />
+    <input ngModel type="file" name="foto" (change)="onChange($event)" />
     <button type="submit">Zapisz</button>
 </form>

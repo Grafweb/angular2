@@ -3,11 +3,12 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
+import { Response } from '@angular/http';
 
 @Injectable() 
 export class LogsService {
     
-    handleError(error: any) {
+    handleError(error: Response | any) {
         console.info("test whether this method is reached");
 
         let errMsg = (error.message) ? error.message :

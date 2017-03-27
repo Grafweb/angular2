@@ -21,6 +21,12 @@ export class PageAddAdminComponent implements OnInit {
         console.log("formSite.value " + formSite.valid);  // false
 
         //this.pageService.sendPage(formSite.value);
+    }    
+
+    onChange(event) {
+        console.info("event");
+        console.dir(event);
+        //$event.target.files[0]
     }
 
     ngOnInit(): void {

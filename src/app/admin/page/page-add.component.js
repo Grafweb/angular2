@@ -33,6 +33,10 @@ System.register(['@angular/core', './shared/page.service'], function(exports_1, 
                     console.log("formSite.value " + formSite.valid); // false
                     //this.pageService.sendPage(formSite.value);
                 };
+                PageAddAdminComponent.prototype.onChange = function (event) {
+                    console.info("event");
+                    console.dir(event);
+                };
                 PageAddAdminComponent.prototype.ngOnInit = function () {
                     console.info("ngOnInit()");
                 };

@@ -42,7 +42,9 @@ export class PageService {
                 err => this.logsService.logError(err)
             );
     }
-
+    
+    //.catch(err => this.logsService.logError(err))
+    
     private extractData(res: Response) {
         console.info("test whether this method is reached");
         console.dir(res);
