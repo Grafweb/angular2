@@ -1,19 +1,15 @@
-System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', '@angular/http', './app.component', './home/home.component', './login/login.component', './admin/admin.component', './admin/page/page-add.component', './admin/page/page-list.component', './admin/header/header.component', './login/login-register.component', './login/shared/headers-default', './login/shared/can-active.service', './login/shared/user-token', './login/shared/login.service', './admin/shared/log.service', './admin/page/shared/page.service', './app.routing'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/platform-browser", "@angular/forms", "@angular/http", "./app.component", "./home/home.component", "./login/login.component", "./admin/admin.component", "./admin/page/page-add.component", "./admin/page/page-list.component", "./admin/header/header.component", "./login/login-register.component", "./login/shared/headers-default", "./login/shared/can-active.service", "./login/shared/user-token", "./login/shared/login.service", "./admin/shared/log.service", "./admin/page/shared/page.service", "./app.routing"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
-    var __metadata = (this && this.__metadata) || function (k, v) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-    };
-    var core_1, platform_browser_1, forms_1, http_1, app_component_1, home_component_1, login_component_1, admin_component_1, page_add_component_1, page_list_component_1, header_component_1, login_register_component_1, headers_default_1, can_active_service_1, user_token_1, login_service_1, log_service_1, page_service_1, app_routing_1;
-    var AppModule;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, platform_browser_1, forms_1, http_1, app_component_1, home_component_1, login_component_1, admin_component_1, page_add_component_1, page_list_component_1, header_component_1, login_register_component_1, headers_default_1, can_active_service_1, user_token_1, login_service_1, log_service_1, page_service_1, app_routing_1, AppModule;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -70,42 +66,42 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
             },
             function (app_routing_1_1) {
                 app_routing_1 = app_routing_1_1;
-            }],
-        execute: function() {
-            //http://blog.angular-university.io/angular2-ngmodule/
-            //http://stackoverflow.com/questions/34464108/angular2-set-headers-for-every-request
+            }
+        ],
+        execute: function () {
+            //providers: [ {provide: RequestOptions, useClass: HeadersRequestOptions }  ],
             AppModule = (function () {
                 function AppModule() {
                 }
-                AppModule = __decorate([
-                    core_1.NgModule({
-                        imports: [platform_browser_1.BrowserModule,
-                            forms_1.FormsModule,
-                            http_1.HttpModule,
-                            app_routing_1.routing],
-                        declarations: [app_component_1.AppComponent,
-                            home_component_1.HomeComponent,
-                            login_component_1.LoginComponent,
-                            login_register_component_1.LoginRegisterComponent,
-                            admin_component_1.AdminComponent,
-                            header_component_1.HeaderAdminComponent,
-                            page_add_component_1.PageAddAdminComponent,
-                            page_list_component_1.PageListAdminComponent
-                        ],
-                        providers: [{ provide: http_1.RequestOptions, useClass: headers_default_1.HeadersRequestOptions },
-                            user_token_1.UserToken,
-                            login_service_1.LoginService,
-                            can_active_service_1.CanActivateTeam,
-                            log_service_1.LogsService,
-                            page_service_1.PageService
-                        ],
-                        bootstrap: [app_component_1.AppComponent]
-                    }), 
-                    __metadata('design:paramtypes', [])
-                ], AppModule);
                 return AppModule;
             }());
+            AppModule = __decorate([
+                core_1.NgModule({
+                    imports: [platform_browser_1.BrowserModule,
+                        forms_1.FormsModule,
+                        http_1.HttpModule,
+                        app_routing_1.routing],
+                    declarations: [app_component_1.AppComponent,
+                        home_component_1.HomeComponent,
+                        login_component_1.LoginComponent,
+                        login_register_component_1.LoginRegisterComponent,
+                        admin_component_1.AdminComponent,
+                        header_component_1.HeaderAdminComponent,
+                        page_add_component_1.PageAddAdminComponent,
+                        page_list_component_1.PageListAdminComponent
+                    ],
+                    providers: [{ provide: http_1.RequestOptions, useClass: headers_default_1.HeadersRequestOptions },
+                        user_token_1.UserToken,
+                        login_service_1.LoginService,
+                        can_active_service_1.CanActivateTeam,
+                        log_service_1.LogsService,
+                        page_service_1.PageService
+                    ],
+                    bootstrap: [app_component_1.AppComponent]
+                })
+                //providers: [ {provide: RequestOptions, useClass: HeadersRequestOptions }  ],
+            ], AppModule);
             exports_1("AppModule", AppModule);
         }
-    }
+    };
 });

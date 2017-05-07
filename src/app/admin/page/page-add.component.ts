@@ -11,21 +11,32 @@ import { PageService }  from './shared/page.service';
 })
 export class PageAddAdminComponent implements OnInit {
 
-    site:Page = <Page>{}; 
+    public site:object = {};
+
+    public PhotoName:string = "";
+
     
     constructor(private pageService: PageService) { }
 
     onSubmit(formSite: NgForm) {
+        //formSite.value.foto = this.PhotoName;
+        formSite.value.foto = [];//formSite.value.foto.push(this.PhotoName)
+        formSite.value.foto.push(this.PhotoName);
         console.dir(formSite);
         console.log("formSite.value " + formSite.value);  // { first: '', last: '' }
         console.log("formSite.value " + formSite.valid);  // false
-
-        //this.pageService.sendPage(formSite.value);
+        // let merged = { ...formSite.value, file: this.PhotoName };
+        // console.log("merged " + merged);
+        // console.dir(merged);
+        //let merged = { ...foo, ...bar, ...baz };
+        this.pageService.sendPage(formSite.value)
+            .subscribe( data => data );
     }    
 
     onChange(event) {
         console.info("event");
         console.dir(event);
+        this.PhotoName = event.target.files[0].name;
         //$event.target.files[0]
     }
 

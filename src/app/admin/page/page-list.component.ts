@@ -17,16 +17,12 @@ export class PageListAdminComponent implements OnInit  {
 
     //site:Page = new PageData();
 
-    allPage: Array<Page>;
+    allPage: Page[];
 
     getAllPage() {
         console.info("wykonałem getAllPage");
         return this.pageService.getListPages()
-        .subscribe( data => {
-            this.allPage = data;
-            console.info("data" + data);
-            console.dir(data);
-            },
+        .subscribe( data => this.allPage.push(data),
                 err => this.logsService.logError(err)
             );
     }

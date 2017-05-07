@@ -1,7 +1,8 @@
 "use strict";
-var app = require('express');
-var jwt = require('jwt-simple');
-var config = require('./config/keyJwt');
+Object.defineProperty(exports, "__esModule", { value: true });
+var app = require("express");
+var jwt = require("jwt-simple");
+var config = require("./config/keyJwt");
 var router = app.Router();
 router.use(function (req, res, next) {
     console.info("wyk auth");
@@ -20,5 +21,4 @@ router.get('/', function (req, res, next) {
         next();
     }
 });
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = router;

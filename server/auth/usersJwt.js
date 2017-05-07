@@ -1,10 +1,11 @@
 "use strict";
-var app = require('express');
-var jwt = require('jwt-simple');
-var config = require('./config/keyJwt');
-var handleError = require('../shared/error');
-var userRegistry_1 = require('./models/userRegistry');
-var crypto_1 = require('../shared/crypto');
+Object.defineProperty(exports, "__esModule", { value: true });
+var app = require("express");
+var jwt = require("jwt-simple");
+var config = require("./config/keyJwt");
+var handleError = require("../shared/error");
+var userRegistry_1 = require("./models/userRegistry");
+var crypto_1 = require("../shared/crypto");
 var router = app.Router();
 router.get('/', function (req, res, next) {
     if (!req.headers['x-auth']) {
@@ -32,7 +33,6 @@ router.post('/', function (req, res, next) {
             handleError(err);
     });
 });
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = router;
 // // find one iphone adventures - iphone adventures??
 // Adventure.findOne({ type: 'iphone' }, function (err, adventure) {});

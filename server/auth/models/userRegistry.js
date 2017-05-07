@@ -1,5 +1,6 @@
 "use strict";
-var mongoose = require('mongoose');
+Object.defineProperty(exports, "__esModule", { value: true });
+var mongoose = require("mongoose");
 var userRegistry = new mongoose.Schema({
     _id: { type: String, select: false },
     username: String,

@@ -1,5 +1,6 @@
 "use strict";
-var mongoose = require('mongoose');
+Object.defineProperty(exports, "__esModule", { value: true });
+var mongoose = require("mongoose");
 var pageSchema = new mongoose.Schema({
     title_meta: String,
     description_meta: String,

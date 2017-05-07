@@ -1,7 +1,8 @@
 "use strict";
-var app = require('express');
-var handleError = require('../shared/error');
-var pages_1 = require('./models/pages');
+Object.defineProperty(exports, "__esModule", { value: true });
+var app = require("express");
+var handleError = require("../shared/error");
+var pages_1 = require("./models/pages");
 var router = app.Router();
 router.use(function (req, res, next) {
     console.info("wyk PAGE");
@@ -27,5 +28,4 @@ router.get('/', function (req, res, next) {
         res.json(data);
     });
 });
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = router;

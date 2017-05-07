@@ -1,9 +1,10 @@
 "use strict";
-var app = require('express');
-var jwt = require('jwt-simple');
-var config = require('./config/keyJwt');
-var userRegistry_1 = require('./models/userRegistry');
-var crypto_1 = require('../shared/crypto');
+Object.defineProperty(exports, "__esModule", { value: true });
+var app = require("express");
+var jwt = require("jwt-simple");
+var config = require("./config/keyJwt");
+var userRegistry_1 = require("./models/userRegistry");
+var crypto_1 = require("../shared/crypto");
 var router = app.Router();
 // router.get('/', (req, res, next) => {
 //   if (!req.headers['x-auth']) {
@@ -73,7 +74,6 @@ router.post('/', function (req, res, next) {
     //   })
     // });
 });
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = router;
 //https://www.youtube.com/watch?v=-_QubA7rpcg
 //https://gist.github.com/brennanMKE/ee8ea002d305d4539ef6
